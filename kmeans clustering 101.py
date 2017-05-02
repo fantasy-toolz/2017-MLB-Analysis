@@ -1,7 +1,9 @@
 # Let's start by importing some site packages shall we?
 # These packages will assist in webscraping
+from mpl_toolkits.mplot3d import Axes3D
+
 import requests
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 # These packages are for tabular manipulation
 import pandas as pd
 # These packages are for graphing
@@ -49,9 +51,9 @@ for row in table_data.findAll("tr"):
             rows.append([float(vbr), player, AB, R, HR, RBI, SB, AVG, OBP, H, B2, B3, BB, SO, SLG, OPS, float(Own[:-1])/100])
 
 # Great, our Data is in a list of lists: much more pythonic. Let's birth a pandas table!
-#df = pd.DataFrame(rows, columns=headers)
-#df.to_csv(fantasy_pros_csv, index=False)
-df = pd.read_csv(fantasy_pros_csv)
+df = pd.DataFrame(rows, columns=headers)
+df.to_csv(fantasy_pros_csv, index=False)
+#df = pd.read_csv(fantasy_pros_csv)
 
 # Unfortunately, most scientific packages in ptyhon don't work with pandas directly. We'll extract an array into numpy with the data that we'll cluster.
 X = df[['R','RBI', 'HR', 'SB']].values
@@ -88,7 +90,10 @@ cluster2d = plt.scatter(centroids[:, 0],centroids[:, 1], marker = "x", s=150, li
 # Part of the clustering appeal is that it can handle a lot of dimensions. Indeed, we gave the clustering algorithm 4 dimensions.
 # Let's take a look at how these clusters look in 3D by adding the HR totals as the z direction.
 fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
+ax = Axes3D(fig)
 for i in range(len(X)):
     print("coordinate:",X[i], "label:", labels[i])
     ax.scatter(X[i][0], X[i][1], X[i][2], c = colors[labels[i]][0], linewidths = 0, alpha = 0.5)
+
+plt.show()
+
