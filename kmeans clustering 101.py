@@ -2,6 +2,8 @@
 # These packages will assist in webscraping
 from mpl_toolkits.mplot3d import Axes3D
 
+import numpy as np
+
 import requests
 from bs4 import BeautifulSoup
 # These packages are for tabular manipulation
@@ -57,6 +59,7 @@ df.to_csv(fantasy_pros_csv, index=False)
 
 # Unfortunately, most scientific packages in ptyhon don't work with pandas directly. We'll extract an array into numpy with the data that we'll cluster.
 X = df[['R','RBI', 'HR', 'SB']].values
+N = np.array(df['Player'].values)
 
 # Let's take a look at few variable scatters. These get hard because of the differing distributions amongst stats.
 r2rbi = plt.scatter(X[:, 0], X[:, 1], linewidths=0, alpha = 0.2)
@@ -77,13 +80,12 @@ print(labels)
 
 # I still see things better in tables, so I'll pop the cluster assignments back to the dataframe.
 df['Clusters'] = pd.Series(predict, index=df.index)
-#fantasy_pros_clusters = r'C:\Fantasy\Data\Fantasy Pros\hitter clusters.csv'
-#df.to_csv(fantasy_pros_clusters, index=False)
+
 
 # That tells us a bit, but we can get more with some graphs. Let's start in 2D graphing the Runs to RBI relationship.
 colors = ["k.","r.", "c.","y.", "m.", "g.", "b."]
 for i in range(len(X)):
-    print("coordinate:",X[i], "label:", labels[i])
+    #print("coordinate:",X[i], "label:", labels[i])
     plt.plot(X[i][0], X[i][1], colors[labels[i]], markersize = 10)
 cluster2d = plt.scatter(centroids[:, 0],centroids[:, 1], marker = "x", s=150, linewidths = 0, zorder = 10, alpha = 0.2)
 
@@ -92,8 +94,24 @@ cluster2d = plt.scatter(centroids[:, 0],centroids[:, 1], marker = "x", s=150, li
 fig = plt.figure()
 ax = Axes3D(fig)
 for i in range(len(X)):
-    print("coordinate:",X[i], "label:", labels[i])
+    #print("coordinate:",X[i], "label:", labels[i])
     ax.scatter(X[i][0], X[i][1], X[i][2], c = colors[labels[i]][0], linewidths = 0, alpha = 0.5)
 
+
+dudes = ['Ryan Zimmerman','Christian Yelich','Corey Dickerson','Xander Bogaerts','Chris Owings']
+
+for dude in dudes:
+    wheredude = np.where(dude==N)[0][0]
+    print wheredude,N[wheredude]
+    ax.text(X[wheredude][0],X[wheredude][1],X[wheredude][2],N[wheredude],color=colors[labels[wheredude]][0],ha='left',size=10)
+
+
+ax.set_xlim(0, 35)
+ax.set_ylim(0, 35)
+ax.set_zlim(0, 14)
+ax.set_xlabel('Runs')
+ax.set_ylabel('RBIs')
+ax.set_zlabel('HRs')
+    
 plt.show()
 
