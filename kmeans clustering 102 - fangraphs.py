@@ -15,24 +15,13 @@ import sys;
 sys.setrecursionlimit(40000)
 
 # Now we'll go ahead and grab some data
-# If you are working on a plane and can't get ahold of the interwebs, maybe you want to work from file
-fantasy_pros_csv = r'C:\Fantasy\Data\Fantasy Pros\hitters 20170501.csv'
-# Here's some webscraping logic to grab data from FantasyPros
+# Here's some webscraping logic to grab data from Fangraphs
 pos_type = 'pit'
 url      =   "http://www.fangraphs.com/leaders.aspx?pos=all&stats={0}&lg=all&qual=y&type=8&season=2017&month=0&season1=2017&ind=0&team=0&rost=0&age=0&filter=&players=0&page=1_1000".format(pos_type)
 r               = requests.get(url)
 soup            = BeautifulSoup(r.content)
 table_data      = soup.find("table", { "class" : "rgMasterTable"})
-
-html = soup.prettify()  #bs is your BeautifulSoup object
-with open(r"C:\Fantasy\out1.txt","w") as out:
-    for i in range(0, len(html)):
-        try:
-            out.write(html[i])
-        except Exception:
-            1+1
-            
-            
+          
 headers = [header.text for header in table_data.findAll('th')]
 
 # All of our data is in a 'Beautiful Soup' but we think in tables so let's coerce this data into a shape
@@ -105,7 +94,7 @@ df['Clusters'] = pd.Series(predict, index=df.index)
 #fantasy_pros_clusters = r'C:\Fantasy\Data\Fantasy Pros\pitcher clusters 20170507.csv'
 #df.to_csv(fantasy_pros_clusters, index=False)
 
-# That tells us a bit, but we can get more with some graphs. Let's start in 2D graphing the Runs to RBI relationship.
+# That tells us a bit, but we can get more with some graphs. Let's start in 2D graphing the BB/9 to FIP relationship.
 colors = ["k.","r.", "c.","y.", "m.", "g.", "b."]
 fig = plt.figure()
 clusters2d = fig.add_subplot(111)
@@ -115,7 +104,7 @@ for i in range(len(X)):
 clusters2d.scatter(centroids[:, 1],centroids[:, 2], marker = "x")
 
 # Part of the clustering appeal is that it can handle a lot of dimensions. Indeed, we gave the clustering algorithm 4 dimensions.
-# Let's take a look at how these clusters look in 3D by adding the HR totals as the z direction.
+# Let's take a look at how these clusters look in 3D by adding the k/9 totals as the z direction.
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 for i in range(len(X)):
