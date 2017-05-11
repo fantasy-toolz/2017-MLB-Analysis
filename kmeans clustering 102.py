@@ -15,13 +15,13 @@ import sys;
 sys.setrecursionlimit(40000)
 
 # Now we'll go ahead and grab some data
-# Here's some webscraping logic to grab data from Fangraphs
+# Here's some webscraping logic to grab data from FantasyPros
 pos_type = 'pit'
 url      =   "http://www.fangraphs.com/leaders.aspx?pos=all&stats={0}&lg=all&qual=y&type=8&season=2017&month=0&season1=2017&ind=0&team=0&rost=0&age=0&filter=&players=0&page=1_1000".format(pos_type)
 r               = requests.get(url)
 soup            = BeautifulSoup(r.content)
-table_data      = soup.find("table", { "class" : "rgMasterTable"})
-          
+table_data      = soup.find("table", { "class" : "rgMasterTable"})      
+            
 headers = [header.text for header in table_data.findAll('th')]
 
 # All of our data is in a 'Beautiful Soup' but we think in tables so let's coerce this data into a shape
@@ -91,8 +91,6 @@ print(labels)
 
 # I still see things better in tables, so I'll pop the cluster assignments back to the dataframe.
 df['Clusters'] = pd.Series(predict, index=df.index)
-#fantasy_pros_clusters = r'C:\Fantasy\Data\Fantasy Pros\pitcher clusters 20170507.csv'
-#df.to_csv(fantasy_pros_clusters, index=False)
 
 # That tells us a bit, but we can get more with some graphs. Let's start in 2D graphing the BB/9 to FIP relationship.
 colors = ["k.","r.", "c.","y.", "m.", "g.", "b."]
@@ -103,12 +101,38 @@ for i in range(len(X)):
     clusters2d.plot(X[i][1], X[i][2], colors[labels[i]], markersize = 10)
 clusters2d.scatter(centroids[:, 1],centroids[:, 2], marker = "x")
 
-# Part of the clustering appeal is that it can handle a lot of dimensions. Indeed, we gave the clustering algorithm 4 dimensions.
-# Let's take a look at how these clusters look in 3D by adding the k/9 totals as the z direction.
+# Part of the clustering appeal is that it can handle a lot of dimensions. Indeed, we gave the clustering algorithm 3 dimensions.
+# Let's take a look at how these clusters look in 3D by adding the K/9 totals as the z direction.
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 for i in range(len(X)):
 #    print("coordinate:",X[i], "label:", labels[i])
-    ax.scatter(X[i][0], X[i][1], X[i][2], c = colors[labels[i]][0], linewidths = 0, alpha = 0.5)
-    
+    ax.scatter(X[i][0], X[i][1], X[i][2], c = colors[labels[i]][0], linewidths = 0, alpha = 0.3)
+fig
+
+# Now it's time to finalize that last figure with some labels.
+# Let's pick a few interesting dudes
+dudes = [['Dan Straily','left'],
+         ['Ubaldo Jimenez', 'left'],
+         ['Dallas Keuchel', 'right'],
+         ['Robbie Ray','left'],
+         ['Jordan Zimmermann','right'],
+         ['Clayton Kershaw','left'],
+         ['Mike Leake','right']]
+
+# We'll need to figure out which points are for which dudes and lableing them on the figure
+for dude in dudes:
+    dude_name = dude[0]
+    wheredude = int(df.loc[df['Name'] == dude_name].iloc[0][0]-1)
+    print wheredude
+    ax.text(X[wheredude][0],X[wheredude][1],X[wheredude][2],dude_name,color=colors[labels[wheredude]][0],ha=dude[1],size=10)
+
+# Lastly, let's add some labels to each axis
+ax.set_xlim(0, 15)
+ax.set_ylim(0, 8)
+ax.set_zlim(0, 8)
+ax.set_xlabel('K/9')
+ax.set_zlabel('FIP')
+ax.set_ylabel('BB/9', linespacing=3.1)
+
 fig
