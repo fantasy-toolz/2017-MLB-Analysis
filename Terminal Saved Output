@@ -1,0 +1,3119 @@
+Last login: Wed Aug  9 12:46:16 on ttys010
+d1x-nat-vl932-172-30-238-79:~ mpetersen$ df -h
+Filesystem                          Size   Used  Avail Capacity iused      ifree %iused  Mounted on
+/dev/disk1                         233Gi  205Gi   27Gi    89% 3040056 4291927223    0%   /
+devfs                              198Ki  198Ki    0Bi   100%     684          0  100%   /dev
+map /etc/auto_home                   0Bi    0Bi    0Bi   100%       0          0  100%   /home
+map /etc/auto.astro                  0Bi    0Bi    0Bi   100%       0          0  100%   /astro
+localhost:/8j_13SjTDHPrzI73Y_291K  233Gi  233Gi    0Bi   100%       0          0  100%   /Volumes/MobileBackups
+/dev/disk4s2                       931Gi   24Gi  907Gi     3%     928 4294966351    0%   /Volumes/AST337
+1x-nat-vl932-172-30-238-79:~ mpetersen$ df -h
+Filesystem                          Size   Used  Avail Capacity iused      ifree %iused  Mounted on
+/dev/disk1                         233Gi  205Gi   27Gi    89% 3038718 4291928561    0%   /
+devfs                              198Ki  198Ki    0Bi   100%     684          0  100%   /dev
+map /etc/auto_home                   0Bi    0Bi    0Bi   100%       0          0  100%   /home
+map /etc/auto.astro                  0Bi    0Bi    0Bi   100%       0          0  100%   /astro
+localhost:/8j_13SjTDHPrzI73Y_291K  233Gi  233Gi    0Bi   100%       0          0  100%   /Volumes/MobileBackups
+/dev/disk4s2                       931Gi   50Gi  881Gi     6%   29561 4294937718    0%   /Volumes/AST337
+1x-nat-vl932-172-30-238-79:~ mpetersen$ df -h
+Filesystem                          Size   Used  Avail Capacity iused      ifree %iused  Mounted on
+/dev/disk1                         233Gi  205Gi   27Gi    89% 3039001 4291928278    0%   /
+devfs                              196Ki  196Ki    0Bi   100%     678          0  100%   /dev
+map /etc/auto_home                   0Bi    0Bi    0Bi   100%       0          0  100%   /home
+map /etc/auto.astro                  0Bi    0Bi    0Bi   100%       0          0  100%   /astro
+localhost:/8j_13SjTDHPrzI73Y_291K  233Gi  233Gi    0Bi   100%       0          0  100%   /Volumes/MobileBackups
+1x-nat-vl932-172-30-238-79:~ mpetersen$ cd ~/Dropbox/LMT_IC348/
+1x-nat-vl932-172-30-238-79:LMT_IC348 mpetersen$ ls
+ ic348_ch2_map.py		ancillary_data			figures
+ plotmap.py			background			lmt_data
+IC348FirstResults.pdf		compare_defs.py			monr2_filtering_report.pdf
+Icon?				compare_defs.pyc		plotmap.py
+SOURCELISTS			disp_fight1.py			read_cieza.py
+Transition-Disks-SEDs.html	draft
+analysis			emails
+1x-nat-vl932-172-30-238-79:LMT_IC348 mpetersen$ grep cieza *.py
+read_cieza.py:f = open('/Users/mpetersen/Dropbox/LMT_IC348/ancillary_data/ciezamatch.dat')
+1x-nat-vl932-172-30-238-79:LMT_IC348 mpetersen$ cd ancillary_data/
+1x-nat-vl932-172-30-238-79:ancillary_data mpetersen$ grep cieza *.py
+diskmass.py:f = open(basedir+'ancillary_data/ciezamatch.dat')
+match_stellar_sources.py:# cieza positions
+match_stellar_sources.py:f = open(basedir+'ancillary_data/cieza15.dat')
+read_datasets_prop.py:# cieza positions
+read_datasets_prop.py:f = open(basedir+'ancillary_data/cieza15.dat')
+1x-nat-vl932-172-30-238-79:ancillary_data mpetersen$ cd
+1x-nat-vl932-172-30-238-79:~ mpetersen$ python
+Python 2.7.12 |Anaconda custom (x86_64)| (default, Jul  2 2016, 17:43:17) 
+[GCC 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2336.11.00)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+Anaconda is brought to you by Continuum Analytics.
+Please check out: http://continuum.io/thanks and https://anaconda.org
+>>> 
+>>> 
+>>> 
+>>> import os
+>>> 
+>>> #from astropy.table import Table
+... import numpy as np
+import matplotlib.pyplot as plt
+
+from astropy.io import fits
+from astropy import wcs
+import aplpy
+#import re
+#from operator import itemgetter
+from numpy import *
+from __main__ import *
+
+
+cdhdu = fits.open('/Users/mpetersen/Dropbox/LMT_IC348/ancillary_data/ic348_irac_ch2.fits')[0]
+
+
+fig = aplpy.FITSFigure(cdhdu)#, figsize=(16, 18))
+#fig.show_grayscale()
+fig.show_colorscale(cmap='Greys')
+
+
+
+# mark out all class 2
+
+# "index","ra","dec","j","h","k","ch1","ch2","ch3","ch4","m24","uj","uh","uk","uch1","uch2","uch3","uch4","um24","ak","class"
+FullG09 = np.genfromtxt('/Users/mpetersen/Downloads/cg_table.txt',\
+                              dtype={'names': ("index","RA","Dec",\
+                                               "j","h","k",\
+                                               "ch1","ch2","ch3","ch4",\
+                                               "m24","uj","uh","uk",\
+                                               "uch1","uch2","uch3","uch4",\
+                                    >>> import matplotlib.pyplot as plt
+
+from astropy.io import fits
+from astropy import wcs
+import aplpy
+#import re
+#from operator import itemgetter
+from numpy import *
+from __main__ import *
+
+
+cdhdu = fits.open('/Users/mpetersen/Dropbox/LMT_IC348/ancillary_data/ic348_irac_ch2.fits')[0]
+
+
+fig = aplpy.FITSFigure(cdhdu)#, figsize=(16, 18))
+#fig.show_grayscale()
+fig.show_colorscale(cmap='Greys')
+
+
+
+# mark out all class 2
+
+# "index","ra","dec","j","h","k","ch1","ch2","ch3","ch4","m24","uj","uh","uk","uch1","uch2","uch3","uch4","um24","ak","class"
+FullG09 = np.genfromtxt('/Users/mpetersen/Downloads/cg_table.txt',\
+                              dtype={'names': ("index","RA","Dec",\
+                                               "j","h","k",\
+                                               "ch1","ch2","ch3","ch4",\
+                                               "m24","uj","uh","uk",\
+                                               "uch1","uch2","uch3","uch4",\
+                                               "um24","ak","class    >>> 
+from astropy.io import fits
+from astropy import wcs
+import aplpy
+#import re
+#from operator import itemgetter
+from numpy import *
+from __main__ import *
+
+
+cdhdu = fits.open('/Users/mpetersen/Dropbox/LMT_IC348/ancillary_data/ic348_irac_ch2.fits')[0]
+
+
+fig = aplpy.FITSFigure(cdhdu)#, figsize=(16, 18))
+#fig.show_grayscale()
+fig.show_colorscale(cmap='Greys')
+
+
+
+# mark out all class 2
+
+# "index","ra","dec","j","h","k","ch1","ch2","ch3","ch4","m24","uj","uh","uk","uch1","uch2","uch3","uch4","um24","ak","class"
+FullG09 = np.genfromtxt('/Users/mpetersen/Downloads/cg_table.txt',\
+                              dtype={'names': ("index","RA","Dec",\
+                                               "j","h","k",\
+                                               "ch1","ch2","ch3","ch4",\
+                                               "m24","uj","uh","uk",\
+                                               "uch1","uch2","uch3","uch4",\
+                                               "um24","ak","class      >>> from astropy.io import fits
+from astropy import wcs
+import aplpy
+#import re
+#from operator import itemgetter
+from numpy import *
+from __main__ import *
+
+
+cdhdu = fits.open('/Users/mpetersen/Dropbox/LMT_IC348/ancillary_data/ic348_irac_ch2.fits')[0]
+
+
+fig = aplpy.FITSFigure(cdhdu)#, figsize=(16, 18))
+#fig.show_grayscale()
+fig.show_colorscale(cmap='Greys')
+
+
+
+# mark out all class 2
+
+# "index","ra","dec","j","h","k","ch1","ch2","ch3","ch4","m24","uj","uh","uk","uch1","uch2","uch3","uch4","um24","ak","class"
+FullG09 = np.genfromtxt('/Users/mpetersen/Downloads/cg_table.txt',\
+                              dtype={'names': ("index","RA","Dec",\
+                                               "j","h","k",\
+                                               "ch1","ch2","ch3","ch4",\
+                                               "m24","uj","uh","uk",\
+                                               "uch1","uch2","uch3","uch4",\
+                                               "um24","ak","class                                   >>> from astropy import wcs
+>>> import aplpy
+#import re
+#from operator import itemgetter
+from numpy import *
+from __main__ import *
+
+
+cdhdu = fits.open('/Users/mpetersen/Dropbox/LMT_IC348/ancillary_data/ic348_irac_ch2.fits')[0]
+
+
+fig = aplpy.FITSFigure(cdhdu)#, figsize=(16, 18))
+#fig.show_grayscale()
+fig.show_colorscale(cmap='Greys')
+
+
+
+# mark out all class 2
+
+# "index","ra","dec","j","h","k","ch1","ch2","ch3","ch4","m24","uj","uh","uk","uch1","uch2","uch3","uch4","um24","ak","class"
+FullG09 = np.genfromtxt('/Users/mpetersen/Downloads/cg_table.txt',\
+                              dtype={'names': ("index","RA","Dec",\
+                                               "j","h","k",\
+                                               "ch1","ch2","ch3","ch4",\
+                                               "m24","uj","uh","uk",\
+                                               "uch1","uch2","uch3","uch4",\
+                                               "um24","ak","class                                         'formats': ('i2','f8','f8',\
+   >>> #import re
+... #from operator import itemgetter
+... from numpy import *
+>>> from __main__ import *
+>>> 
+>>> 
+>>> cdhdu = fits.open('/Users/mpetersen/Dropbox/LMT_IC348/ancillary_data/ic348_irac_ch2.fits')[0]
+>>> 
+>>> 
+>>> fig = aplpy.FITSFigure(cdhdu)#, figsize=(16, 18))
+#fig.show_grayscale()
+fig.show_colorscale(cmap='Greys')
+
+
+
+# mark out all class 2
+
+# "index","ra","dec","j","h","k","ch1","ch2","ch3","ch4","m24","uj","uh","uk","uch1","uch2","uch3","uch4","um24","ak","class"
+FullG09 = np.genfromtxt('/Users/mpetersen/Downloads/cg_table.txt',\
+                              dtype={'names': ("index","RA","Dec",\
+                                               "j","h","k",\
+                                               "ch1","ch2","ch3","ch4",\
+                                               "m24","uj","uh","uk",\
+                                               "uch1","uch2","uch3","uch4",\
+                                               "um24","ak","class                                         'formats': ('i2','f8','f8',\
+                                               'f8','f8','f8',\
+                                               'f8','f8','f8','f8',\
+                                               'f8','f8','f8','f8',\
+                                           WARNING: FITSFixedWarning: Removed redundant SCAMP distortion parameters because SIP parameters are also present [astropy.wcs.wcs]
+WARNING: Cannot determine equinox. Assuming J2000. [aplpy.wcs_util]
+WARNING: Cannot determine equinox. Assuming J2000. [aplpy.wcs_util]
+>>> #fig.show_grayscale()
+... fig.show_colorscale(cmap='Greys')
+INFO: Auto-setting vmin to -4.720e+01 [aplpy.core]
+INFO: Auto-setting vmax to  5.240e+02 [aplpy.core]
+>>> 
+>>> 
+>>> 
+>>> # mark out all class 2
+... 
+>>> # "index","ra","dec","j","h","k","ch1","ch2","ch3","ch4","m24","uj","uh","uk","uch1","uch2","uch3","uch4","um24","ak","class"
+... FullG09 = np.genfromtxt('/Users/mpetersen/Downloads/cg_table.txt',\
+...                               dtype={'names': ("index","RA","Dec",\
+...                                                "j","h","k",\
+...                                                "ch1","ch2","ch3","ch4",\
+...                                                "m24","uj","uh","uk",\
+...                                                "uch1","uch2","uch3","uch4",\
+...                                                "um24","ak","class                                         'formats': ('i2','f8','f8',\
+...                                                'f8','f8','f8',\
+...                                                'f8','f8','f8','f8',\
+...                                                'f8','f8','f8','f8',\
+...                                                'f8','f8','f8','f8',\
+...                                                'f8','f8','S20')},\
+...                               skip_header=2)
+  File "<stdin>", line 14
+    skip_header=2)
+                 ^
+SyntaxError: EOL while scanning string literal
+>>> 
+>>> 
+>>> 
+>>> w = np.where(FullG09['class']=='2')[0]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'FullG09' is not defined
+>>> fig.show_markers(FullG09['RA'][w],FullG09['Dec'][w],facecolor='white',marker='+',s=40.,lw=2.)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'FullG09' is not defined
+>>> 
+>>> w = np.where(FullG09['class']=='3')[0]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'FullG09' is not defined
+>>> fig.show_markers(FullG09['RA'][w],FullG09['Dec'][w],facecolor='white',marker='x',s=40.,lw=2.)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'FullG09' is not defined
+>>> 
+>>> w = np.where(FullG09['class']=='1')[0]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'FullG09' is not defined
+>>> fig.show_markers(FullG09['RA'][w],FullG09['Dec'][w],edgecolor='white',marker='+',s=40.,lw=2.)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'FullG09' is not defined
+>>> 
+>>> FullG09 = np.genfromtxt('/Users/mpetersen/Downloads/cg_table.txt',\
+...                               dtype={'names': ("index","RA","Dec",\
+...                                                "j","h","k",\
+...                                                "ch1","ch2","ch3","ch4",\
+...                                                "m24","uj","uh","uk",\
+...                                                "uch1","uch2","uch3","uch4",\
+...                                                "um24","ak","class"),\
+...                                     'formats': ('i2','f8','f8',\
+...                                                'f8','f8','f8',\
+...                                                'f8','f8','f8','f8',\
+...                                                'f8','f8','f8','f8',\
+...                                                'f8','f8','f8','f8',\
+...                                                'f8','f8','S20')},\
+...                               skip_header=2)
+>>> 
+>>> 
+>>> plt.show(block=False)
+>>> /Users/mpetersen/anaconda/lib/python2.7/site-packages/aplpy/labels.py:432: UnicodeWarning: Unicode equal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  if self.coord == x or self.axis.apl_tick_positions_world[ipos] > 0:
+/Users/mpetersen/.local/lib/python2.7/site-packages/matplotlib/font_manager.py:1297: UserWarning: findfont: Font family [u'sans-serif'] not found. Falling back to DejaVu Sans
+  (prop.get_family(), self.defaultFamily[fontext]))
+
+>>> 
+>>> 
+>>> w = np.where(FullG09['class']=='2')[0]
+>>> fig.show_markers(FullG09['RA'][w],FullG09['Dec'][w],facecolor='white',marker='+',s=40.,lw=2.)
+>>> 
+>>> w = np.where(FullG09['class']=='3')[0]
+>>> fig.show_markers(FullG09['RA'][w],FullG09['Dec'][w],facecolor='white',marker='x',s=40.,lw=2.)
+>>> 
+>>> w = np.where(FullG09['class']=='1')[0]
+>>> fig.show_markers(FullG09['RA'][w],FullG09['Dec'][w],edgecolor='white',marker='+',s=40.,lw=2.)
+>>> 
+>>> plt.draw()
+>>> fig.show_markers([56.08896],[31.99239],edgecolor='red',marker='+',s=40.,lw=2.)
+>>> plt.draw()
+>>> fig.show_markers(np.array([56.08896]),np.array([31.99239]),edgecolor='red',marker='+',s=40.,lw=2.)
+>>> plt.draw()
+>>> fig.show_markers(np.array([56.08896]),np.array([31.99239]),edgecolor='white',marker='s',s=40.,lw=2.)
+>>> plt.draw()
+>>> exit()
+1x-nat-vl932-172-30-238-79:~ mpetersen$ cd
+1x-nat-vl932-172-30-238-79:~ mpetersen$ python
+Python 2.7.12 |Anaconda custom (x86_64)| (default, Jul  2 2016, 17:43:17) 
+[GCC 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2336.11.00)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+Anaconda is brought to you by Continuum Analytics.
+Please check out: http://continuum.io/thanks and https://anaconda.org
+>>> exit()
+1x-nat-vl932-172-30-238-79:~ mpetersen$ ssh -X cluster
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Tue Aug 15 09:51:28 2017 from 172.30.51.254
+...............,#@@@@@:..............................................
+.............@@@@@@@@@@...@...............+;......@..................
+..........,@@@@@@@+.#@@..@@..............@@@....:@@..................
+.........@@@@@@+....@@,.+@+.............@@@#....@@@..................
+.........@@@@,.....;@@.,@@..............@+@....@@@@..................
+........+@@@@.....,@@..@@..............@@#@...#@,@:..................
+........+@@,......@@,.@@..............@@.@:...@@#@...................
+.................@@;.:@@.......@@@@...@@@@...@@,@,.....@@@...........
+................@@@@@@@@@#...,@@@@@..@@#@....@@@#....;@@@@:..........
+............:;@@@@@@@@@@@...,@@,@@:..@@@:...+@@@....;@@@@@@..........
+..........,@@@@@@@@@@@@@...;@@@@....#@@...+.@@...,.+@@.#@@.;.........
+...........#@@@...;@@......@@@,..:@.@@+..@#.@@..,@.@@..#@@@..........
+............@@;...@@;......@@@..@@:.@@@.@@..@@;;@+.+@:,@@@@..........
+...........@@@....@@+......;@@@@@:...@@@@...@@@@#...@@@@;............
+,,,,,,,,,,,@@,,,,,@@,,,,,,,,@@@@,,,,,@@@,,,,,@@+,,,,:@@,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,:@@@@,,,,,@#,,,,,+,,,,,,,,,,,,,,,,,@,,,,,,,,,,,,,,,,,,,,
+::::::::::;@@@@@@@::::@@@::::@@@::::::::::::::@@@::::::::::::::::::::
+::::::::::@@@@@@@@#:#@@@@::;@@@@:::::::::::::@@@:::::::::::::::::::::
+:::::::::@@@@@::#@:@@@@@@:#@@@@;:::::;::::::#@@#:::::::::::::::::::::
+:::::::::@@@@:::@@+@@:@@:#@@@@::::::@@@:::::@@@::::::::::::::::::::::
+:::::::::@@::::+@+@@:@@##@@@@+::::::@@+::::@@@:::::::::::::::::::::::
+:::::::::::::::@@@@:;@@#@@@@@:::::::+#::::@@@::::::::::;+::::::::::::
+::::::::::::::@@@@::@@@@@+@@:::::::@@::::@@@..@@;::::#@@@#:::::::::::
+:::::::::::::;@@@::@@@@@:@@;::::::@@@:::;@@#@@@@+:::@@@@@::::::::::::
+:::::::::::::@@@+::@@@@:@@@::::::@@@::::@@@@@+@@:::@@@;@@::::::::::::
+:::::::::::+@@@::@@@@::@@@::::+:@@;::+:@@@@;#@::@:@@@@;::@:::::::::::
+:::::::::::@@@::+@@@;::@@#::+@+:@@::@@:@@@@@@::@@:@@#:::@@:::::::::::
+::::::::::;@@@::@@@#::#@@#:@@:::@@@@@;:@@@@@@#@@::@@@.@@@::::::::::::
+:::::::::::@@:::@@@:::+@@@@@;:::@@@@;::@@::@@@@:::+@@@@@:::::::::::::
+:::::::::::;;:::;@:::::@@@@::::::@@::::::::;@@:::::@@@:::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+mpetersen@eagle:~$ jobber
+srun: error: x11: unable to connect node node032
+                                                ...............,#@@@@@:..............................................
+.............@@@@@@@@@@...@...............+;......@..................
+..........,@@@@@@@+.#@@..@@..............@@@....:@@..................
+.........@@@@@@+....@@,.+@+.............@@@#....@@@..................
+.........@@@@,.....;@@.,@@..............@+@....@@@@..................
+........+@@@@.....,@@..@@..............@@#@...#@,@:..................
+........+@@,......@@,.@@..............@@.@:...@@#@...................
+.................@@;.:@@.......@@@@...@@@@...@@,@,.....@@@...........
+................@@@@@@@@@#...,@@@@@..@@#@....@@@#....;@@@@:..........
+............:;@@@@@@@@@@@...,@@,@@:..@@@:...+@@@....;@@@@@@..........
+..........,@@@@@@@@@@@@@...;@@@@....#@@...+.@@...,.+@@.#@@.;.........
+...........#@@@...;@@......@@@,..:@.@@+..@#.@@..,@.@@..#@@@..........
+............@@;...@@;......@@@..@@:.@@@.@@..@@;;@+.+@:,@@@@..........
+...........@@@....@@+......;@@@@@:...@@@@...@@@@#...@@@@;............
+,,,,,,,,,,,@@,,,,,@@,,,,,,,,@@@@,,,,,@@@,,,,,@@+,,,,:@@,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,:@@@@,,,,,@#,,,,,+,,,,,,,,,,,,,,,,,@,,,,,,,,,,,,,,,,,,,,
+::::::::::;@@@@@@@::::@@@::::@@@::::::::::::::@@@::::::::::::::::::::
+::::::::::@@@@@@@@#:#@@@@::;@@@@:::::::::::::@@@:::::::::::::::::::::
+:::::::::@@@@@::#@:@@@@@@:#@@@@;:::::;::::::#@@#:::::::::::::::::::::
+:::::::::@@@@:::@@+@@:@@:#@@@@::::::@@@:::::@@@::::::::::::::::::::::
+:::::::::@@::::+@+@@:@@##@@@@+::::::@@+::::@@@:::::::::::::::::::::::
+:::::::::::::::@@@@:;@@#@@@@@:::::::+#::::@@@::::::::::;+::::::::::::
+::::::::::::::@@@@::@@@@@+@@:::::::@@::::@@@..@@;::::#@@@#:::::::::::
+:::::::::::::;@@@::@@@@@:@@;::::::@@@:::;@@#@@@@+:::@@@@@::::::::::::
+:::::::::::::@@@+::@@@@:@@@::::::@@@::::@@@@@+@@:::@@@;@@::::::::::::
+:::::::::::+@@@::@@@@::@@@::::+:@@;::+:@@@@;#@::@:@@@@;::@:::::::::::
+:::::::::::@@@::+@@@;::@@#::+@+:@@::@@:@@@@@@::@@:@@#:::@@:::::::::::
+::::::::::;@@@::@@@#::#@@#:@@:::@@@@@;:@@@@@@#@@::@@@.@@@::::::::::::
+:::::::::::@@:::@@@:::+@@@@@;:::@@@@;::@@::@@@@:::+@@@@@:::::::::::::
+:::::::::::;;:::;@:::::@@@@::::::@@::::::::;@@:::::@@@:::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+mpetersen@node032:~$ exit
+exit
+mpetersen@eagle:~$ srun -n1 --pty --x11=first --exclude=node032 $SHELL
+...............,#@@@@@:..............................................
+.............@@@@@@@@@@...@...............+;......@..................
+..........,@@@@@@@+.#@@..@@..............@@@....:@@..................
+.........@@@@@@+....@@,.+@+.............@@@#....@@@..................
+.........@@@@,.....;@@.,@@..............@+@....@@@@..................
+........+@@@@.....,@@..@@..............@@#@...#@,@:..................
+........+@@,......@@,.@@..............@@.@:...@@#@...................
+.................@@;.:@@.......@@@@...@@@@...@@,@,.....@@@...........
+................@@@@@@@@@#...,@@@@@..@@#@....@@@#....;@@@@:..........
+............:;@@@@@@@@@@@...,@@,@@:..@@@:...+@@@....;@@@@@@..........
+..........,@@@@@@@@@@@@@...;@@@@....#@@...+.@@...,.+@@.#@@.;.........
+...........#@@@...;@@......@@@,..:@.@@+..@#.@@..,@.@@..#@@@..........
+............@@;...@@;......@@@..@@:.@@@.@@..@@;;@+.+@:,@@@@..........
+...........@@@....@@+......;@@@@@:...@@@@...@@@@#...@@@@;............
+,,,,,,,,,,,@@,,,,,@@,,,,,,,,@@@@,,,,,@@@,,,,,@@+,,,,:@@,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,:@@@@,,,,,@#,,,,,+,,,,,,,,,,,,,,,,,@,,,,,,,,,,,,,,,,,,,,
+::::::::::;@@@@@@@::::@@@::::@@@::::::::::::::@@@::::::::::::::::::::
+::::::::::@@@@@@@@#:#@@@@::;@@@@:::::::::::::@@@:::::::::::::::::::::
+:::::::::@@@@@::#@:@@@@@@:#@@@@;:::::;::::::#@@#:::::::::::::::::::::
+:::::::::@@@@:::@@+@@:@@:#@@@@::::::@@@:::::@@@::::::::::::::::::::::
+:::::::::@@::::+@+@@:@@##@@@@+::::::@@+::::@@@:::::::::::::::::::::::
+:::::::::::::::@@@@:;@@#@@@@@:::::::+#::::@@@::::::::::;+::::::::::::
+::::::::::::::@@@@::@@@@@+@@:::::::@@::::@@@..@@;::::#@@@#:::::::::::
+:::::::::::::;@@@::@@@@@:@@;::::::@@@:::;@@#@@@@+:::@@@@@::::::::::::
+:::::::::::::@@@+::@@@@:@@@::::::@@@::::@@@@@+@@:::@@@;@@::::::::::::
+:::::::::::+@@@::@@@@::@@@::::+:@@;::+:@@@@;#@::@:@@@@;::@:::::::::::
+:::::::::::@@@::+@@@;::@@#::+@+:@@::@@:@@@@@@::@@:@@#:::@@:::::::::::
+::::::::::;@@@::@@@#::#@@#:@@:::@@@@@;:@@@@@@#@@::@@@.@@@::::::::::::
+:::::::::::@@:::@@@:::+@@@@@;:::@@@@;::@@::@@@@:::+@@@@@:::::::::::::
+:::::::::::;;:::;@:::::@@@@::::::@@::::::::;@@:::::@@@:::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+mpetersen@node057:~$ python
+             : :  : :            .:::::::. 
+             : ^..^::          .::sSSs::^SSs.     TIME FOR WIZARDRY 
+             \.....:/        .::sS^     ^:S:Ss.  
+              =| :|=        sS:s:         :S:SSS.  
+               |: :|        SS: :^^^--   -^^^S:SSSS.  
+              .-: ::-.     SS::  :Y^@^   ^ @ ^sS:SSS.  
+            .^  ^--^-^    SS:::  :^    .      S:SSSSS  
+           :     ---)     S:^ .sSs.     \ ^  .S:SSSSSb  
+          :     -...)    .^ .sP^:sS.   :::: .ss:sSSSSS          ,..,  
+         .^ .---.../    .^.S^  .sss:...    ssY^:sSSSSSb        : :  : 
+       ..^  ^.  : ::   .^^. ..-ssssS::.^^^  :s:sSSSSSSS      ./ : ./ 
+     .^s:  ::^-.: :: ..sP-^^ .sssss::     .::ssSSSSSsss.    :  : : 
+    : :S^  :ssssS ::: ss:: ^   .sSP^     .::ssSSSSssSSSSs..^  : : 
+    ^.^S  .:ssssS ::^.Ysb:::  ^sSP^     .::ssSSSSSSSSSSSSP   :  :-.  
+     : Yb.::ssssS ::.:::Ss::. sSS      ::::ssSSSSSSSSSY^       : ./ 
+    .::.^:::ssssS ::^::ssSs:::YSS      ::::ssSSSSSSSY^         /: 
+    ::::.^::ssssS ::sSSssss:::::::..   .::::ssSSS^ ........  ..../ 
+    :::::.^:SsssS ::      ^::::::::sSS^::::sYssS:::::::::Ss ::ss.^.  
+     ^:::: ^SsssS ::       :::::sSSSss::::sSSsD:::::::::sss ::YsS. : 
+         ^: SsY:: ::        ^SSSSSssss:SSSSssssPsSSs.  SssS  :::ss : 
+          : s::^: ::          ^SssssP:::SssssPsSS^ ^^-.ssss  :::sP : 
+         .:::^  : ::           ^. ::::::::^:::SP       ^ss4s,^:ss.^ 
+        ^:=^    : ::            : ^::::::^ ^::          ^ssssSSY^  
+Python 2.7.9 (default, Mar  1 2015, 12:57:24) 
+[GCC 4.9.2] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+Traceback (most recent call last):
+  File "/home/mpetersen/.pystart.py", line 10, in <module>
+    plt.figure()
+  File "/usr/lib/python2.7/dist-packages/matplotlib/pyplot.py", line 435, in figure
+    **kwargs)
+  File "/usr/lib/python2.7/dist-packages/matplotlib/backends/backend_tkagg.py", line 81, in new_figure_manager
+    return new_figure_manager_given_figure(num, figure)
+  File "/usr/lib/python2.7/dist-packages/matplotlib/backends/backend_tkagg.py", line 89, in new_figure_manager_given_figure
+    window = Tk.Tk()
+  File "/usr/lib/python2.7/lib-tk/Tkinter.py", line 1813, in __init__
+    self.tk = _tkinter.create(screenName, baseName, className, interactive, wantobjects, useTk, sync, use)
+_tkinter.TclError: couldn't connect to display "localhost:10.0"
+>>> exit()
+mpetersen@node057:~$ exit
+exit
+mpetersen@eagle:~$ srun -n1 --pty --x11=first --exclude=node032,node057 $SHELL
+...............,#@@@@@:..............................................
+.............@@@@@@@@@@...@...............+;......@..................
+..........,@@@@@@@+.#@@..@@..............@@@....:@@..................
+.........@@@@@@+....@@,.+@+.............@@@#....@@@..................
+.........@@@@,.....;@@.,@@..............@+@....@@@@..................
+........+@@@@.....,@@..@@..............@@#@...#@,@:..................
+........+@@,......@@,.@@..............@@.@:...@@#@...................
+.................@@;.:@@.......@@@@...@@@@...@@,@,.....@@@...........
+................@@@@@@@@@#...,@@@@@..@@#@....@@@#....;@@@@:..........
+............:;@@@@@@@@@@@...,@@,@@:..@@@:...+@@@....;@@@@@@..........
+..........,@@@@@@@@@@@@@...;@@@@....#@@...+.@@...,.+@@.#@@.;.........
+...........#@@@...;@@......@@@,..:@.@@+..@#.@@..,@.@@..#@@@..........
+............@@;...@@;......@@@..@@:.@@@.@@..@@;;@+.+@:,@@@@..........
+...........@@@....@@+......;@@@@@:...@@@@...@@@@#...@@@@;............
+,,,,,,,,,,,@@,,,,,@@,,,,,,,,@@@@,,,,,@@@,,,,,@@+,,,,:@@,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,:@@@@,,,,,@#,,,,,+,,,,,,,,,,,,,,,,,@,,,,,,,,,,,,,,,,,,,,
+::::::::::;@@@@@@@::::@@@::::@@@::::::::::::::@@@::::::::::::::::::::
+::::::::::@@@@@@@@#:#@@@@::;@@@@:::::::::::::@@@:::::::::::::::::::::
+:::::::::@@@@@::#@:@@@@@@:#@@@@;:::::;::::::#@@#:::::::::::::::::::::
+:::::::::@@@@:::@@+@@:@@:#@@@@::::::@@@:::::@@@::::::::::::::::::::::
+:::::::::@@::::+@+@@:@@##@@@@+::::::@@+::::@@@:::::::::::::::::::::::
+:::::::::::::::@@@@:;@@#@@@@@:::::::+#::::@@@::::::::::;+::::::::::::
+::::::::::::::@@@@::@@@@@+@@:::::::@@::::@@@..@@;::::#@@@#:::::::::::
+:::::::::::::;@@@::@@@@@:@@;::::::@@@:::;@@#@@@@+:::@@@@@::::::::::::
+:::::::::::::@@@+::@@@@:@@@::::::@@@::::@@@@@+@@:::@@@;@@::::::::::::
+:::::::::::+@@@::@@@@::@@@::::+:@@;::+:@@@@;#@::@:@@@@;::@:::::::::::
+:::::::::::@@@::+@@@;::@@#::+@+:@@::@@:@@@@@@::@@:@@#:::@@:::::::::::
+::::::::::;@@@::@@@#::#@@#:@@:::@@@@@;:@@@@@@#@@::@@@.@@@::::::::::::
+:::::::::::@@:::@@@:::+@@@@@;:::@@@@;::@@::@@@@:::+@@@@@:::::::::::::
+:::::::::::;;:::;@:::::@@@@::::::@@::::::::;@@:::::@@@:::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+mpetersen@node061:~$ python
+             : :  : :            .:::::::. 
+             : ^..^::          .::sSSs::^SSs.     TIME FOR WIZARDRY 
+             \.....:/        .::sS^     ^:S:Ss.  
+              =| :|=        sS:s:         :S:SSS.  
+               |: :|        SS: :^^^--   -^^^S:SSSS.  
+              .-: ::-.     SS::  :Y^@^   ^ @ ^sS:SSS.  
+            .^  ^--^-^    SS:::  :^    .      S:SSSSS  
+           :     ---)     S:^ .sSs.     \ ^  .S:SSSSSb  
+          :     -...)    .^ .sP^:sS.   :::: .ss:sSSSSS          ,..,  
+         .^ .---.../    .^.S^  .sss:...    ssY^:sSSSSSb        : :  : 
+       ..^  ^.  : ::   .^^. ..-ssssS::.^^^  :s:sSSSSSSS      ./ : ./ 
+     .^s:  ::^-.: :: ..sP-^^ .sssss::     .::ssSSSSSsss.    :  : : 
+    : :S^  :ssssS ::: ss:: ^   .sSP^     .::ssSSSSssSSSSs..^  : : 
+    ^.^S  .:ssssS ::^.Ysb:::  ^sSP^     .::ssSSSSSSSSSSSSP   :  :-.  
+     : Yb.::ssssS ::.:::Ss::. sSS      ::::ssSSSSSSSSSY^       : ./ 
+    .::.^:::ssssS ::^::ssSs:::YSS      ::::ssSSSSSSSY^         /: 
+    ::::.^::ssssS ::sSSssss:::::::..   .::::ssSSS^ ........  ..../ 
+    :::::.^:SsssS ::      ^::::::::sSS^::::sYssS:::::::::Ss ::ss.^.  
+     ^:::: ^SsssS ::       :::::sSSSss::::sSSsD:::::::::sss ::YsS. : 
+         ^: SsY:: ::        ^SSSSSssss:SSSSssssPsSSs.  SssS  :::ss : 
+          : s::^: ::          ^SssssP:::SssssPsSS^ ^^-.ssss  :::sP : 
+         .:::^  : ::           ^. ::::::::^:::SP       ^ss4s,^:ss.^ 
+        ^:=^    : ::            : ^::::::^ ^::          ^ssssSSY^  
+Python 2.7.9 (default, Mar  1 2015, 12:57:24) 
+[GCC 4.9.2] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+>>> #
+... # goal: make an integrator 
+... #
+... import time
+>>> import matplotlib.cm as cm
+>>> from scipy import interpolate
+>>> import matplotlib as mpl
+>>> 
+>>> 
+>>> import exptool.io.psp_io as psp_io
+>>> 
+>>> 
+>>> import exptool.basis.spheresl as spheresl
+>>> import exptool.basis.eof as eof
+>>> import exptool.utils.halo_methods as halo_methods
+>>> import exptool.analysis.trapping as trapping
+>>> import exptool.basis.potential as potential
+>>> import exptool.utils.integrate as integrate
+>>> import exptool.orbits.orbit as orbit
+>>> 
+>>> 
+>>> simulation_directory = '/scratch/mpetersen/Disk002/'
+>>> simulation_name = 'run002'
+>>> trapping_comp = 'star'
+>>> 
+>>> 
+>>> 
+>>> simulation_directory = '/scratch/mpetersen/Disk001/'
+>>> simulation_name = 'run001'
+>>> 
+>>> eof_file = simulation_directory+'.eof.cache.file'
+>>> sph_file = simulation_directory+'SLGridSph.cache.'+simulation_name
+>>> model_file = simulation_directory+'SLGridSph.model'
+>>> 
+>>> 
+>>> intime = 1000
+>>> 
+>>> F,pattern,rotfreq = potential.get_fields(simulation_directory,simulation_name,intime,eof_file,sph_file,model_file)
+potential.Fields.total_coefficients: Computing centering (centering=True)
+potential.Fields.total_coefficients: Using computed disk center for halo (mutual_center=True)
+potential.Fields.total_coefficients: (x,y,z) = 0.00001,-0.00007,0.00000
+eof.make_coefficients_multi: 16 processors, 62500 particles each.
+eof.make_coefficients_multi: Accumulation took 17.41 seconds, or 17.41 microseconds per orbit.
+sl.compute_coefficients: 16 processors, 62500 particles each.
+spheresl.compute_coefficients: accumulation took 75.89 seconds, or 75.89 microseconds per orbit.
+>>> 
+>>> 
+>>> 
+>>>    
+... #
+... # just look at a single orbit
+... #
+... nint = 1000
+>>> dt = 0.0003
+>>> max_m = 6
+>>> 
+>>> start_pos = [0.01,0.,0.]
+>>> start_vel = [0.,0.25,0.]
+>>> dtime = np.max([integrate.compute_timestep(F,start_pos,start_vel,dyn_res=80.,verbose=True),dt])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "build/bdist.linux-x86_64/egg/exptool/utils/integrate.py", line 254, in compute_timestep
+  File "build/bdist.linux-x86_64/egg/exptool/basis/potential.py", line 368, in return_forces_cart
+  File "build/bdist.linux-x86_64/egg/exptool/basis/eof.py", line 690, in force_eval
+TypeError: object of type 'numpy.float64' has no len()
+>>> 
+>>> 
+>>> 
+>>> 
+>>> Orbit = integrate.leapfrog_integrate(F,nint,dtime,start_pos,start_vel,rotfreq=-1.*np.linspace(abs(rotfreq),0.9*abs(rotfreq),nint),no_odd=True,halo_l=2,disk_m=max_m,verbose=1,ap_max=10000)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'dtime' is not defined
+>>> 
+>>> 
+>>> exit()
+mpetersen@node061:~$ python
+             : :  : :            .:::::::. 
+             : ^..^::          .::sSSs::^SSs.     TIME FOR WIZARDRY 
+             \.....:/        .::sS^     ^:S:Ss.  
+              =| :|=        sS:s:         :S:SSS.  
+               |: :|        SS: :^^^--   -^^^S:SSSS.  
+              .-: ::-.     SS::  :Y^@^   ^ @ ^sS:SSS.  
+            .^  ^--^-^    SS:::  :^    .      S:SSSSS  
+           :     ---)     S:^ .sSs.     \ ^  .S:SSSSSb  
+          :     -...)    .^ .sP^:sS.   :::: .ss:sSSSSS          ,..,  
+         .^ .---.../    .^.S^  .sss:...    ssY^:sSSSSSb        : :  : 
+       ..^  ^.  : ::   .^^. ..-ssssS::.^^^  :s:sSSSSSSS      ./ : ./ 
+     .^s:  ::^-.: :: ..sP-^^ .sssss::     .::ssSSSSSsss.    :  : : 
+    : :S^  :ssssS ::: ss:: ^   .sSP^     .::ssSSSSssSSSSs..^  : : 
+    ^.^S  .:ssssS ::^.Ysb:::  ^sSP^     .::ssSSSSSSSSSSSSP   :  :-.  
+     : Yb.::ssssS ::.:::Ss::. sSS      ::::ssSSSSSSSSSY^       : ./ 
+    .::.^:::ssssS ::^::ssSs:::YSS      ::::ssSSSSSSSY^         /: 
+    ::::.^::ssssS ::sSSssss:::::::..   .::::ssSSS^ ........  ..../ 
+    :::::.^:SsssS ::      ^::::::::sSS^::::sYssS:::::::::Ss ::ss.^.  
+     ^:::: ^SsssS ::       :::::sSSSss::::sSSsD:::::::::sss ::YsS. : 
+         ^: SsY:: ::        ^SSSSSssss:SSSSssssPsSSs.  SssS  :::ss : 
+          : s::^: ::          ^SssssP:::SssssPsSS^ ^^-.ssss  :::sP : 
+         .:::^  : ::           ^. ::::::::^:::SP       ^ss4s,^:ss.^ 
+        ^:=^    : ::            : ^::::::^ ^::          ^ssssSSY^  
+Python 2.7.9 (default, Mar  1 2015, 12:57:24) 
+[GCC 4.9.2] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+>>> #
+... # goal: make an integrator 
+... #
+... import time
+>>> import matplotlib.cm as cm
+>>> from scipy import interpolate
+>>> import matplotlib as mpl
+>>> 
+>>> 
+>>> import exptool.io.psp_io as psp_io
+>>> 
+>>> 
+>>> import exptool.basis.spheresl as spheresl
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+zipimport.ZipImportError: bad local file header in /home/mpetersen/.local/lib/python2.7/site-packages/exptool-0.1-py2.7-linux-x86_64.egg
+>>> import exptool.basis.eof as eof
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+zipimport.ZipImportError: bad local file header in /home/mpetersen/.local/lib/python2.7/site-packages/exptool-0.1-py2.7-linux-x86_64.egg
+>>> import exptool.utils.halo_methods as halo_methods
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "build/bdist.linux-x86_64/egg/exptool/utils/halo_methods.py", line 13, in <module>
+zipimport.ZipImportError: bad local file header in /home/mpetersen/.local/lib/python2.7/site-packages/exptool-0.1-py2.7-linux-x86_64.egg
+>>> import exptool.analysis.trapping as trapping
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+zipimport.ZipImportError: bad local file header in /home/mpetersen/.local/lib/python2.7/site-packages/exptool-0.1-py2.7-linux-x86_64.egg
+>>> import exptool.basis.potential as potential
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+zipimport.ZipImportError: bad local file header in /home/mpetersen/.local/lib/python2.7/site-packages/exptool-0.1-py2.7-linux-x86_64.egg
+>>> import exptool.utils.integrate as integrate
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "build/bdist.linux-x86_64/egg/exptool/utils/integrate.py", line 29, in <module>
+  File "build/bdist.linux-x86_64/egg/exptool/orbits/orbit.py", line 23, in <module>
+zipimport.ZipImportError: bad local file header in /home/mpetersen/.local/lib/python2.7/site-packages/exptool-0.1-py2.7-linux-x86_64.egg
+>>> import exptool.orbits.orbit as orbit
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "build/bdist.linux-x86_64/egg/exptool/orbits/orbit.py", line 23, in <module>
+zipimport.ZipImportError: bad local file header in /home/mpetersen/.local/lib/python2.7/site-packages/exptool-0.1-py2.7-linux-x86_64.egg
+>>> 
+>>> exit()
+mpetersen@node061:~$ exit
+exit
+mpetersen@eagle:~$ srun -n1 --pty --x11=first --exclude=node032,node057 $SHELL
+...............,#@@@@@:..............................................
+.............@@@@@@@@@@...@...............+;......@..................
+..........,@@@@@@@+.#@@..@@..............@@@....:@@..................
+.........@@@@@@+....@@,.+@+.............@@@#....@@@..................
+.........@@@@,.....;@@.,@@..............@+@....@@@@..................
+........+@@@@.....,@@..@@..............@@#@...#@,@:..................
+........+@@,......@@,.@@..............@@.@:...@@#@...................
+.................@@;.:@@.......@@@@...@@@@...@@,@,.....@@@...........
+................@@@@@@@@@#...,@@@@@..@@#@....@@@#....;@@@@:..........
+............:;@@@@@@@@@@@...,@@,@@:..@@@:...+@@@....;@@@@@@..........
+..........,@@@@@@@@@@@@@...;@@@@....#@@...+.@@...,.+@@.#@@.;.........
+...........#@@@...;@@......@@@,..:@.@@+..@#.@@..,@.@@..#@@@..........
+............@@;...@@;......@@@..@@:.@@@.@@..@@;;@+.+@:,@@@@..........
+...........@@@....@@+......;@@@@@:...@@@@...@@@@#...@@@@;............
+,,,,,,,,,,,@@,,,,,@@,,,,,,,,@@@@,,,,,@@@,,,,,@@+,,,,:@@,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,:@@@@,,,,,@#,,,,,+,,,,,,,,,,,,,,,,,@,,,,,,,,,,,,,,,,,,,,
+::::::::::;@@@@@@@::::@@@::::@@@::::::::::::::@@@::::::::::::::::::::
+::::::::::@@@@@@@@#:#@@@@::;@@@@:::::::::::::@@@:::::::::::::::::::::
+:::::::::@@@@@::#@:@@@@@@:#@@@@;:::::;::::::#@@#:::::::::::::::::::::
+:::::::::@@@@:::@@+@@:@@:#@@@@::::::@@@:::::@@@::::::::::::::::::::::
+:::::::::@@::::+@+@@:@@##@@@@+::::::@@+::::@@@:::::::::::::::::::::::
+:::::::::::::::@@@@:;@@#@@@@@:::::::+#::::@@@::::::::::;+::::::::::::
+::::::::::::::@@@@::@@@@@+@@:::::::@@::::@@@..@@;::::#@@@#:::::::::::
+:::::::::::::;@@@::@@@@@:@@;::::::@@@:::;@@#@@@@+:::@@@@@::::::::::::
+:::::::::::::@@@+::@@@@:@@@::::::@@@::::@@@@@+@@:::@@@;@@::::::::::::
+:::::::::::+@@@::@@@@::@@@::::+:@@;::+:@@@@;#@::@:@@@@;::@:::::::::::
+:::::::::::@@@::+@@@;::@@#::+@+:@@::@@:@@@@@@::@@:@@#:::@@:::::::::::
+::::::::::;@@@::@@@#::#@@#:@@:::@@@@@;:@@@@@@#@@::@@@.@@@::::::::::::
+:::::::::::@@:::@@@:::+@@@@@;:::@@@@;::@@::@@@@:::+@@@@@:::::::::::::
+:::::::::::;;:::;@:::::@@@@::::::@@::::::::;@@:::::@@@:::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+mpetersen@node065:~$ python
+             : :  : :            .:::::::. 
+             : ^..^::          .::sSSs::^SSs.     TIME FOR WIZARDRY 
+             \.....:/        .::sS^     ^:S:Ss.  
+              =| :|=        sS:s:         :S:SSS.  
+               |: :|        SS: :^^^--   -^^^S:SSSS.  
+              .-: ::-.     SS::  :Y^@^   ^ @ ^sS:SSS.  
+            .^  ^--^-^    SS:::  :^    .      S:SSSSS  
+           :     ---)     S:^ .sSs.     \ ^  .S:SSSSSb  
+          :     -...)    .^ .sP^:sS.   :::: .ss:sSSSSS          ,..,  
+         .^ .---.../    .^.S^  .sss:...    ssY^:sSSSSSb        : :  : 
+       ..^  ^.  : ::   .^^. ..-ssssS::.^^^  :s:sSSSSSSS      ./ : ./ 
+     .^s:  ::^-.: :: ..sP-^^ .sssss::     .::ssSSSSSsss.    :  : : 
+    : :S^  :ssssS ::: ss:: ^   .sSP^     .::ssSSSSssSSSSs..^  : : 
+    ^.^S  .:ssssS ::^.Ysb:::  ^sSP^     .::ssSSSSSSSSSSSSP   :  :-.  
+     : Yb.::ssssS ::.:::Ss::. sSS      ::::ssSSSSSSSSSY^       : ./ 
+    .::.^:::ssssS ::^::ssSs:::YSS      ::::ssSSSSSSSY^         /: 
+    ::::.^::ssssS ::sSSssss:::::::..   .::::ssSSS^ ........  ..../ 
+    :::::.^:SsssS ::      ^::::::::sSS^::::sYssS:::::::::Ss ::ss.^.  
+     ^:::: ^SsssS ::       :::::sSSSss::::sSSsD:::::::::sss ::YsS. : 
+         ^: SsY:: ::        ^SSSSSssss:SSSSssssPsSSs.  SssS  :::ss : 
+          : s::^: ::          ^SssssP:::SssssPsSS^ ^^-.ssss  :::sP : 
+         .:::^  : ::           ^. ::::::::^:::SP       ^ss4s,^:ss.^ 
+        ^:=^    : ::            : ^::::::^ ^::          ^ssssSSY^  
+Python 2.7.9 (default, Mar  1 2015, 12:57:24) 
+[GCC 4.9.2] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+>>> #
+... # goal: make an integrator 
+... #
+... import time
+>>> import matplotlib.cm as cm
+>>> from scipy import interpolate
+>>> import matplotlib as mpl
+>>> 
+>>> 
+>>> import exptool.io.psp_io as psp_io
+>>> 
+>>> 
+>>> import exptool.basis.spheresl as spheresl
+>>> import exptool.basis.eof as eof
+>>> import exptool.utils.halo_methods as halo_methods
+>>> import exptool.analysis.trapping as trapping
+>>> import exptool.basis.potential as potential
+>>> import exptool.utils.integrate as integrate
+>>> import exptool.orbits.orbit as orbit
+>>> 
+>>> simulation_directory = '/scratch/mpetersen/Disk002/'
+>>> simulation_name = 'run002'
+>>> trapping_comp = 'star'
+>>> 
+>>> 
+>>> 
+>>> simulation_directory = '/scratch/mpetersen/Disk001/'
+>>> simulation_name = 'run001'
+>>> 
+>>> eof_file = simulation_directory+'.eof.cache.file'
+>>> sph_file = simulation_directory+'SLGridSph.cache.'+simulation_name
+>>> model_file = simulation_directory+'SLGridSph.model'
+>>> 
+>>> 
+>>> intime = 1000
+>>> 
+>>> F,pattern,rotfreq = potential.get_fields(simulation_directory,simulation_name,intime,eof_file,sph_file,model_file)
+potential.Fields.total_coefficients: Computing centering (centering=True)
+potential.Fields.total_coefficients: Using computed disk center for halo (mutual_center=True)
+potential.Fields.total_coefficients: (x,y,z) = 0.00001,-0.00007,0.00000
+eof.make_coefficients_multi: 16 processors, 62500 particles each.
+eof.make_coefficients_multi: Accumulation took 19.37 seconds, or 19.37 microseconds per orbit.
+sl.compute_coefficients: 16 processors, 62500 particles each.
+spheresl.compute_coefficients: accumulation took 83.28 seconds, or 83.28 microseconds per orbit.
+>>> 
+>>> 
+>>>     
+... #
+... # just look at a single orbit
+... #
+... nint = 1000
+>>> dt = 0.0003
+>>> max_m = 6
+>>> 
+>>> start_pos = [0.01,0.,0.]
+>>> start_vel = [0.,0.25,0.]
+>>> dtime = np.max([integrate.compute_timestep(F,start_pos,start_vel,dyn_res=80.,verbose=True),dt])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "build/bdist.linux-x86_64/egg/exptool/utils/integrate.py", line 254, in compute_timestep
+  File "build/bdist.linux-x86_64/egg/exptool/basis/potential.py", line 376, in return_forces_cart
+  File "build/bdist.linux-x86_64/egg/exptool/basis/spheresl.py", line 1048, in force_eval
+ValueError: operands could not be broadcast together with shapes (21,) (20,) 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> Orbit = integrate.leapfrog_integrate(F,nint,dtime,start_pos,start_vel,rotfreq=-1.*np.linspace(abs(rotfreq),0.9*abs(rotfreq),nint),no_odd=True,halo_l=2,disk_m=max_m,verbose=1,ap_max=10000)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'dtime' is not defined
+>>> 
+>>> 
+>>> 
+>>> 
+>>> plt.plot(Orbit['TX'],Orbit['TY'],color='black')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'Orbit' is not defined
+>>> 
+>>> F.SL.expcoef.shape
+(49, 21)
+>>> phi = np.ones(10)
+>>> phiarr = np.tile(phi,(nmax,1)).T
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'nmax' is not defined
+>>> F.SL.nmax
+20
+>>> phiarr = np.tile(phi,(F.SL.nmax,nmax,1)).T
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'nmax' is not defined
+>>> phiarr = np.tile(phi,(F.SL.nmax,1)).T
+>>> phiarr.shape
+(10, 20)
+>>> phi = np.ones(F.SL.lmax+1))
+  File "<stdin>", line 1
+    phi = np.ones(F.SL.lmax+1))
+                              ^
+SyntaxError: invalid syntax
+>>> phi = np.ones(F.SL.lmax+1)
+>>> phiarr = np.tile(phi,(F.SL.nmax+1,1)).T
+>>> phiarr.shape
+(7, 21)
+>>> F.SL.expcoef
+array([[1.2248359989745865, -0.65929429912245563, 0.0062788030758527784,
+        ..., -0.00014971000551659093, 0.00012037098213996011,
+        -3.5734997900362437e-06],
+       [0.0017184556087926979, -0.00048640007358340256,
+        0.0002560475926805808, ..., 7.6503142623718075e-05,
+        -4.8989735493367334e-06, 4.4769037388996661e-05],
+       [-0.0057420290329324372, 0.0010493951072667465,
+        0.00075335748063468729, ..., -2.8182840309066886e-05,
+        2.9389978772406303e-05, 3.7116342908665732e-05],
+       ..., 
+       [-0.00084785524034340816, 5.5977806043640324e-05,
+        4.4968858881198591e-05, ..., -2.9234684095695271e-05,
+        5.3453997237769933e-05, 3.9263464644132292e-06],
+       [0.00063125446023335255, -8.5316896107487836e-05,
+        -1.845677307695468e-05, ..., 1.0407538158622697e-05,
+        7.6710261010846307e-05, 3.638773166423069e-05],
+       [-0.00016460491500013507, 2.5551263083087121e-05,
+        -4.4825777482146526e-05, ..., -2.0077352480759693e-05,
+        1.4243731093908351e-05, 1.3227321438685814e-05]], dtype=object)
+>>> F.SL.expcoef.shape
+(49, 21)
+>>> morder = np.tile(np.arange(1.,lmax+1,1.),(nmax+1,1)).T
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'lmax' is not defined
+>>> morder = np.tile(np.arange(1.,F.SL.lmax+1,1.),(F.SL.nmax+1,1)).T
+>>> morder.shape
+(6, 21)
+>>> exit()
+empetersen@node065:~$ exit
+exit
+mpetersen@eagle:~$ srun -n1 --pty --x11=first --exclude=node032,node057 $SHELL
+...............,#@@@@@:..............................................
+.............@@@@@@@@@@...@...............+;......@..................
+..........,@@@@@@@+.#@@..@@..............@@@....:@@..................
+.........@@@@@@+....@@,.+@+.............@@@#....@@@..................
+.........@@@@,.....;@@.,@@..............@+@....@@@@..................
+........+@@@@.....,@@..@@..............@@#@...#@,@:..................
+........+@@,......@@,.@@..............@@.@:...@@#@...................
+.................@@;.:@@.......@@@@...@@@@...@@,@,.....@@@...........
+................@@@@@@@@@#...,@@@@@..@@#@....@@@#....;@@@@:..........
+............:;@@@@@@@@@@@...,@@,@@:..@@@:...+@@@....;@@@@@@..........
+..........,@@@@@@@@@@@@@...;@@@@....#@@...+.@@...,.+@@.#@@.;.........
+...........#@@@...;@@......@@@,..:@.@@+..@#.@@..,@.@@..#@@@..........
+............@@;...@@;......@@@..@@:.@@@.@@..@@;;@+.+@:,@@@@..........
+...........@@@....@@+......;@@@@@:...@@@@...@@@@#...@@@@;............
+,,,,,,,,,,,@@,,,,,@@,,,,,,,,@@@@,,,,,@@@,,,,,@@+,,,,:@@,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,:@@@@,,,,,@#,,,,,+,,,,,,,,,,,,,,,,,@,,,,,,,,,,,,,,,,,,,,
+::::::::::;@@@@@@@::::@@@::::@@@::::::::::::::@@@::::::::::::::::::::
+::::::::::@@@@@@@@#:#@@@@::;@@@@:::::::::::::@@@:::::::::::::::::::::
+:::::::::@@@@@::#@:@@@@@@:#@@@@;:::::;::::::#@@#:::::::::::::::::::::
+:::::::::@@@@:::@@+@@:@@:#@@@@::::::@@@:::::@@@::::::::::::::::::::::
+:::::::::@@::::+@+@@:@@##@@@@+::::::@@+::::@@@:::::::::::::::::::::::
+:::::::::::::::@@@@:;@@#@@@@@:::::::+#::::@@@::::::::::;+::::::::::::
+::::::::::::::@@@@::@@@@@+@@:::::::@@::::@@@..@@;::::#@@@#:::::::::::
+:::::::::::::;@@@::@@@@@:@@;::::::@@@:::;@@#@@@@+:::@@@@@::::::::::::
+:::::::::::::@@@+::@@@@:@@@::::::@@@::::@@@@@+@@:::@@@;@@::::::::::::
+:::::::::::+@@@::@@@@::@@@::::+:@@;::+:@@@@;#@::@:@@@@;::@:::::::::::
+:::::::::::@@@::+@@@;::@@#::+@+:@@::@@:@@@@@@::@@:@@#:::@@:::::::::::
+::::::::::;@@@::@@@#::#@@#:@@:::@@@@@;:@@@@@@#@@::@@@.@@@::::::::::::
+:::::::::::@@:::@@@:::+@@@@@;:::@@@@;::@@::@@@@:::+@@@@@:::::::::::::
+:::::::::::;;:::;@:::::@@@@::::::@@::::::::;@@:::::@@@:::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+mpetersen@node053:~$ python
+             : :  : :            .:::::::. 
+             : ^..^::          .::sSSs::^SSs.     TIME FOR WIZARDRY 
+             \.....:/        .::sS^     ^:S:Ss.  
+              =| :|=        sS:s:         :S:SSS.  
+               |: :|        SS: :^^^--   -^^^S:SSSS.  
+              .-: ::-.     SS::  :Y^@^   ^ @ ^sS:SSS.  
+            .^  ^--^-^    SS:::  :^    .      S:SSSSS  
+           :     ---)     S:^ .sSs.     \ ^  .S:SSSSSb  
+          :     -...)    .^ .sP^:sS.   :::: .ss:sSSSSS          ,..,  
+         .^ .---.../    .^.S^  .sss:...    ssY^:sSSSSSb        : :  : 
+       ..^  ^.  : ::   .^^. ..-ssssS::.^^^  :s:sSSSSSSS      ./ : ./ 
+     .^s:  ::^-.: :: ..sP-^^ .sssss::     .::ssSSSSSsss.    :  : : 
+    : :S^  :ssssS ::: ss:: ^   .sSP^     .::ssSSSSssSSSSs..^  : : 
+    ^.^S  .:ssssS ::^.Ysb:::  ^sSP^     .::ssSSSSSSSSSSSSP   :  :-.  
+     : Yb.::ssssS ::.:::Ss::. sSS      ::::ssSSSSSSSSSY^       : ./ 
+    .::.^:::ssssS ::^::ssSs:::YSS      ::::ssSSSSSSSY^         /: 
+    ::::.^::ssssS ::sSSssss:::::::..   .::::ssSSS^ ........  ..../ 
+    :::::.^:SsssS ::      ^::::::::sSS^::::sYssS:::::::::Ss ::ss.^.  
+     ^:::: ^SsssS ::       :::::sSSSss::::sSSsD:::::::::sss ::YsS. : 
+         ^: SsY:: ::        ^SSSSSssss:SSSSssssPsSSs.  SssS  :::ss : 
+          : s::^: ::          ^SssssP:::SssssPsSS^ ^^-.ssss  :::sP : 
+         .:::^  : ::           ^. ::::::::^:::SP       ^ss4s,^:ss.^ 
+        ^:=^    : ::            : ^::::::^ ^::          ^ssssSSY^  
+Python 2.7.9 (default, Jun 29 2016, 13:08:31) 
+[GCC 4.9.2] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+Traceback (most recent call last):
+  File "/home/mpetersen/.pystart.py", line 10, in <module>
+    plt.figure()
+  File "/usr/lib/python2.7/dist-packages/matplotlib/pyplot.py", line 435, in figure
+    **kwargs)
+  File "/usr/lib/python2.7/dist-packages/matplotlib/backends/backend_tkagg.py", line 81, in new_figure_manager
+    return new_figure_manager_given_figure(num, figure)
+  File "/usr/lib/python2.7/dist-packages/matplotlib/backends/backend_tkagg.py", line 89, in new_figure_manager_given_figure
+    window = Tk.Tk()
+  File "/usr/lib/python2.7/lib-tk/Tkinter.py", line 1813, in __init__
+    self.tk = _tkinter.create(screenName, baseName, className, interactive, wantobjects, useTk, sync, use)
+_tkinter.TclError: couldn't connect to display "localhost:10.0"
+>>> exit
+Use exit() or Ctrl-D (i.e. EOF) to exit
+>>> exit()
+mpetersen@node053:~$ exit
+exit
+mpetersen@eagle:~$ exit
+logout
+Connection to cluster closed.
+Killed by signal 1.
+1x-nat-vl932-172-30-238-79:~ mpetersen$ ssh -X cluster
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Tue Aug 15 14:08:52 2017 from 172.30.51.254
+...............,#@@@@@:..............................................
+.............@@@@@@@@@@...@...............+;......@..................
+..........,@@@@@@@+.#@@..@@..............@@@....:@@..................
+.........@@@@@@+....@@,.+@+.............@@@#....@@@..................
+.........@@@@,.....;@@.,@@..............@+@....@@@@..................
+........+@@@@.....,@@..@@..............@@#@...#@,@:..................
+........+@@,......@@,.@@..............@@.@:...@@#@...................
+.................@@;.:@@.......@@@@...@@@@...@@,@,.....@@@...........
+................@@@@@@@@@#...,@@@@@..@@#@....@@@#....;@@@@:..........
+............:;@@@@@@@@@@@...,@@,@@:..@@@:...+@@@....;@@@@@@..........
+..........,@@@@@@@@@@@@@...;@@@@....#@@...+.@@...,.+@@.#@@.;.........
+...........#@@@...;@@......@@@,..:@.@@+..@#.@@..,@.@@..#@@@..........
+............@@;...@@;......@@@..@@:.@@@.@@..@@;;@+.+@:,@@@@..........
+...........@@@....@@+......;@@@@@:...@@@@...@@@@#...@@@@;............
+,,,,,,,,,,,@@,,,,,@@,,,,,,,,@@@@,,,,,@@@,,,,,@@+,,,,:@@,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,:@@@@,,,,,@#,,,,,+,,,,,,,,,,,,,,,,,@,,,,,,,,,,,,,,,,,,,,
+::::::::::;@@@@@@@::::@@@::::@@@::::::::::::::@@@::::::::::::::::::::
+::::::::::@@@@@@@@#:#@@@@::;@@@@:::::::::::::@@@:::::::::::::::::::::
+:::::::::@@@@@::#@:@@@@@@:#@@@@;:::::;::::::#@@#:::::::::::::::::::::
+:::::::::@@@@:::@@+@@:@@:#@@@@::::::@@@:::::@@@::::::::::::::::::::::
+:::::::::@@::::+@+@@:@@##@@@@+::::::@@+::::@@@:::::::::::::::::::::::
+:::::::::::::::@@@@:;@@#@@@@@:::::::+#::::@@@::::::::::;+::::::::::::
+::::::::::::::@@@@::@@@@@+@@:::::::@@::::@@@..@@;::::#@@@#:::::::::::
+:::::::::::::;@@@::@@@@@:@@;::::::@@@:::;@@#@@@@+:::@@@@@::::::::::::
+:::::::::::::@@@+::@@@@:@@@::::::@@@::::@@@@@+@@:::@@@;@@::::::::::::
+:::::::::::+@@@::@@@@::@@@::::+:@@;::+:@@@@;#@::@:@@@@;::@:::::::::::
+:::::::::::@@@::+@@@;::@@#::+@+:@@::@@:@@@@@@::@@:@@#:::@@:::::::::::
+::::::::::;@@@::@@@#::#@@#:@@:::@@@@@;:@@@@@@#@@::@@@.@@@::::::::::::
+:::::::::::@@:::@@@:::+@@@@@;:::@@@@;::@@::@@@@:::+@@@@@:::::::::::::
+:::::::::::;;:::;@:::::@@@@::::::@@::::::::;@@:::::@@@:::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+mpetersen@eagle:~$ srun -n1 --pty --x11=first --exclude=node032,node057 $SHELL
+...............,#@@@@@:..............................................
+.............@@@@@@@@@@...@...............+;......@..................
+..........,@@@@@@@+.#@@..@@..............@@@....:@@..................
+.........@@@@@@+....@@,.+@+.............@@@#....@@@..................
+.........@@@@,.....;@@.,@@..............@+@....@@@@..................
+........+@@@@.....,@@..@@..............@@#@...#@,@:..................
+........+@@,......@@,.@@..............@@.@:...@@#@...................
+.................@@;.:@@.......@@@@...@@@@...@@,@,.....@@@...........
+................@@@@@@@@@#...,@@@@@..@@#@....@@@#....;@@@@:..........
+............:;@@@@@@@@@@@...,@@,@@:..@@@:...+@@@....;@@@@@@..........
+..........,@@@@@@@@@@@@@...;@@@@....#@@...+.@@...,.+@@.#@@.;.........
+...........#@@@...;@@......@@@,..:@.@@+..@#.@@..,@.@@..#@@@..........
+............@@;...@@;......@@@..@@:.@@@.@@..@@;;@+.+@:,@@@@..........
+...........@@@....@@+......;@@@@@:...@@@@...@@@@#...@@@@;............
+,,,,,,,,,,,@@,,,,,@@,,,,,,,,@@@@,,,,,@@@,,,,,@@+,,,,:@@,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,:@@@@,,,,,@#,,,,,+,,,,,,,,,,,,,,,,,@,,,,,,,,,,,,,,,,,,,,
+::::::::::;@@@@@@@::::@@@::::@@@::::::::::::::@@@::::::::::::::::::::
+::::::::::@@@@@@@@#:#@@@@::;@@@@:::::::::::::@@@:::::::::::::::::::::
+:::::::::@@@@@::#@:@@@@@@:#@@@@;:::::;::::::#@@#:::::::::::::::::::::
+:::::::::@@@@:::@@+@@:@@:#@@@@::::::@@@:::::@@@::::::::::::::::::::::
+:::::::::@@::::+@+@@:@@##@@@@+::::::@@+::::@@@:::::::::::::::::::::::
+:::::::::::::::@@@@:;@@#@@@@@:::::::+#::::@@@::::::::::;+::::::::::::
+::::::::::::::@@@@::@@@@@+@@:::::::@@::::@@@..@@;::::#@@@#:::::::::::
+:::::::::::::;@@@::@@@@@:@@;::::::@@@:::;@@#@@@@+:::@@@@@::::::::::::
+:::::::::::::@@@+::@@@@:@@@::::::@@@::::@@@@@+@@:::@@@;@@::::::::::::
+:::::::::::+@@@::@@@@::@@@::::+:@@;::+:@@@@;#@::@:@@@@;::@:::::::::::
+:::::::::::@@@::+@@@;::@@#::+@+:@@::@@:@@@@@@::@@:@@#:::@@:::::::::::
+::::::::::;@@@::@@@#::#@@#:@@:::@@@@@;:@@@@@@#@@::@@@.@@@::::::::::::
+:::::::::::@@:::@@@:::+@@@@@;:::@@@@;::@@::@@@@:::+@@@@@:::::::::::::
+:::::::::::;;:::;@:::::@@@@::::::@@::::::::;@@:::::@@@:::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+mpetersen@node053:~$ python
+             : :  : :            .:::::::. 
+             : ^..^::          .::sSSs::^SSs.     TIME FOR WIZARDRY 
+             \.....:/        .::sS^     ^:S:Ss.  
+              =| :|=        sS:s:         :S:SSS.  
+               |: :|        SS: :^^^--   -^^^S:SSSS.  
+              .-: ::-.     SS::  :Y^@^   ^ @ ^sS:SSS.  
+            .^  ^--^-^    SS:::  :^    .      S:SSSSS  
+           :     ---)     S:^ .sSs.     \ ^  .S:SSSSSb  
+          :     -...)    .^ .sP^:sS.   :::: .ss:sSSSSS          ,..,  
+         .^ .---.../    .^.S^  .sss:...    ssY^:sSSSSSb        : :  : 
+       ..^  ^.  : ::   .^^. ..-ssssS::.^^^  :s:sSSSSSSS      ./ : ./ 
+     .^s:  ::^-.: :: ..sP-^^ .sssss::     .::ssSSSSSsss.    :  : : 
+    : :S^  :ssssS ::: ss:: ^   .sSP^     .::ssSSSSssSSSSs..^  : : 
+    ^.^S  .:ssssS ::^.Ysb:::  ^sSP^     .::ssSSSSSSSSSSSSP   :  :-.  
+     : Yb.::ssssS ::.:::Ss::. sSS      ::::ssSSSSSSSSSY^       : ./ 
+    .::.^:::ssssS ::^::ssSs:::YSS      ::::ssSSSSSSSY^         /: 
+    ::::.^::ssssS ::sSSssss:::::::..   .::::ssSSS^ ........  ..../ 
+    :::::.^:SsssS ::      ^::::::::sSS^::::sYssS:::::::::Ss ::ss.^.  
+     ^:::: ^SsssS ::       :::::sSSSss::::sSSsD:::::::::sss ::YsS. : 
+         ^: SsY:: ::        ^SSSSSssss:SSSSssssPsSSs.  SssS  :::ss : 
+          : s::^: ::          ^SssssP:::SssssPsSS^ ^^-.ssss  :::sP : 
+         .:::^  : ::           ^. ::::::::^:::SP       ^ss4s,^:ss.^ 
+        ^:=^    : ::            : ^::::::^ ^::          ^ssssSSY^  
+Python 2.7.9 (default, Jun 29 2016, 13:08:31) 
+[GCC 4.9.2] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+>>> #
+... # goal: make an integrator 
+... #
+... import time
+>>> import matplotlib.cm as cm
+>>> from scipy import interpolate
+>>> import matplotlib as mpl
+>>> 
+>>> 
+>>> import exptool.io.psp_io as psp_io
+>>> 
+>>> 
+>>> import exptool.basis.spheresl as spheresl
+>>> import exptool.basis.eof as eof
+>>> import exptool.utils.halo_methods as halo_methods
+>>> import exptool.analysis.trapping as trapping
+>>> import exptool.basis.potential as potential
+>>> import exptool.utils.integrate as integrate
+>>> import exptool.orbits.orbit as orbit
+>>> 
+>>> 
+>>> simulation_directory = '/scratch/mpetersen/Disk002/'
+>>> simulation_name = 'run002'
+>>> trapping_comp = 'star'
+>>> 
+>>> 
+>>> 
+>>> simulation_directory = '/scratch/mpetersen/Disk001/'
+>>> simulation_name = 'run001'
+>>> 
+>>> eof_file = simulation_directory+'.eof.cache.file'
+>>> sph_file = simulation_directory+'SLGridSph.cache.'+simulation_name
+>>> model_file = simulation_directory+'SLGridSph.model'
+>>> 
+>>> 
+>>> intime = 1000
+>>> 
+>>> F,pattern,rotfreq = potential.get_fields(simulation_directory,simulation_name,intime,eof_file,sph_file,model_file)
+potential.Fields.total_coefficients: Computing centering (centering=True)
+potential.Fields.total_coefficients: Using computed disk center for halo (mutual_center=True)
+potential.Fields.total_coefficients: (x,y,z) = 0.00001,-0.00007,0.00000
+eof.make_coefficients_multi: 16 processors, 62500 particles each.
+eof.make_coefficients_multi: Accumulation took 17.62 seconds, or 17.62 microseconds per orbit.
+sl.compute_coefficients: 16 processors, 62500 particles each.
+spheresl.compute_coefficients: accumulation took 78.33 seconds, or 78.33 microseconds per orbit.
+>>> 
+>>> 
+>>>     
+... #
+... # just look at a single orbit
+... #
+... nint = 1000
+>>> dt = 0.0003
+>>> max_m = 6
+>>> 
+>>> start_pos = [0.01,0.,0.]
+>>> start_vel = [0.,0.25,0.]
+>>> dtime = np.max([integrate.compute_timestep(F,start_pos,start_vel,dyn_res=80.,verbose=True),dt])
+The chosen time criteria is dtA, dt=0.00017
+>>> 
+>>> 
+>>> 
+>>> 
+>>> Orbit = integrate.leapfrog_integrate(F,nint,dtime,start_pos,start_vel,rotfreq=-1.*np.linspace(abs(rotfreq),0.9*abs(rotfreq),nint),no_odd=True,halo_l=2,disk_m=max_m,verbose=1,ap_max=10000)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "build/bdist.linux-x86_64/egg/exptool/utils/integrate.py", line 126, in leapfrog_integrate
+UnboundLocalError: local variable 'barpos' referenced before assignment
+>>> 
+>>> print dtime
+0.0003
+>>> exit
+Use exit() or Ctrl-D (i.e. EOF) to exit
+>>> exit()
+mpetersen@node053:~$ exit
+exit
+mpetersen@eagle:~$ srun -n1 --pty --x11=first --exclude=node032,node057 $SHELL
+...............,#@@@@@:..............................................
+.............@@@@@@@@@@...@...............+;......@..................
+..........,@@@@@@@+.#@@..@@..............@@@....:@@..................
+.........@@@@@@+....@@,.+@+.............@@@#....@@@..................
+.........@@@@,.....;@@.,@@..............@+@....@@@@..................
+........+@@@@.....,@@..@@..............@@#@...#@,@:..................
+........+@@,......@@,.@@..............@@.@:...@@#@...................
+.................@@;.:@@.......@@@@...@@@@...@@,@,.....@@@...........
+................@@@@@@@@@#...,@@@@@..@@#@....@@@#....;@@@@:..........
+............:;@@@@@@@@@@@...,@@,@@:..@@@:...+@@@....;@@@@@@..........
+..........,@@@@@@@@@@@@@...;@@@@....#@@...+.@@...,.+@@.#@@.;.........
+...........#@@@...;@@......@@@,..:@.@@+..@#.@@..,@.@@..#@@@..........
+............@@;...@@;......@@@..@@:.@@@.@@..@@;;@+.+@:,@@@@..........
+...........@@@....@@+......;@@@@@:...@@@@...@@@@#...@@@@;............
+,,,,,,,,,,,@@,,,,,@@,,,,,,,,@@@@,,,,,@@@,,,,,@@+,,,,:@@,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,:@@@@,,,,,@#,,,,,+,,,,,,,,,,,,,,,,,@,,,,,,,,,,,,,,,,,,,,
+::::::::::;@@@@@@@::::@@@::::@@@::::::::::::::@@@::::::::::::::::::::
+::::::::::@@@@@@@@#:#@@@@::;@@@@:::::::::::::@@@:::::::::::::::::::::
+:::::::::@@@@@::#@:@@@@@@:#@@@@;:::::;::::::#@@#:::::::::::::::::::::
+:::::::::@@@@:::@@+@@:@@:#@@@@::::::@@@:::::@@@::::::::::::::::::::::
+:::::::::@@::::+@+@@:@@##@@@@+::::::@@+::::@@@:::::::::::::::::::::::
+:::::::::::::::@@@@:;@@#@@@@@:::::::+#::::@@@::::::::::;+::::::::::::
+::::::::::::::@@@@::@@@@@+@@:::::::@@::::@@@..@@;::::#@@@#:::::::::::
+:::::::::::::;@@@::@@@@@:@@;::::::@@@:::;@@#@@@@+:::@@@@@::::::::::::
+:::::::::::::@@@+::@@@@:@@@::::::@@@::::@@@@@+@@:::@@@;@@::::::::::::
+:::::::::::+@@@::@@@@::@@@::::+:@@;::+:@@@@;#@::@:@@@@;::@:::::::::::
+:::::::::::@@@::+@@@;::@@#::+@+:@@::@@:@@@@@@::@@:@@#:::@@:::::::::::
+::::::::::;@@@::@@@#::#@@#:@@:::@@@@@;:@@@@@@#@@::@@@.@@@::::::::::::
+:::::::::::@@:::@@@:::+@@@@@;:::@@@@;::@@::@@@@:::+@@@@@:::::::::::::
+:::::::::::;;:::;@:::::@@@@::::::@@::::::::;@@:::::@@@:::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+mpetersen@node053:~$ python
+             : :  : :            .:::::::. 
+             : ^..^::          .::sSSs::^SSs.     TIME FOR WIZARDRY 
+             \.....:/        .::sS^     ^:S:Ss.  
+              =| :|=        sS:s:         :S:SSS.  
+               |: :|        SS: :^^^--   -^^^S:SSSS.  
+              .-: ::-.     SS::  :Y^@^   ^ @ ^sS:SSS.  
+            .^  ^--^-^    SS:::  :^    .      S:SSSSS  
+           :     ---)     S:^ .sSs.     \ ^  .S:SSSSSb  
+          :     -...)    .^ .sP^:sS.   :::: .ss:sSSSSS          ,..,  
+         .^ .---.../    .^.S^  .sss:...    ssY^:sSSSSSb        : :  : 
+       ..^  ^.  : ::   .^^. ..-ssssS::.^^^  :s:sSSSSSSS      ./ : ./ 
+     .^s:  ::^-.: :: ..sP-^^ .sssss::     .::ssSSSSSsss.    :  : : 
+    : :S^  :ssssS ::: ss:: ^   .sSP^     .::ssSSSSssSSSSs..^  : : 
+    ^.^S  .:ssssS ::^.Ysb:::  ^sSP^     .::ssSSSSSSSSSSSSP   :  :-.  
+     : Yb.::ssssS ::.:::Ss::. sSS      ::::ssSSSSSSSSSY^       : ./ 
+    .::.^:::ssssS ::^::ssSs:::YSS      ::::ssSSSSSSSY^         /: 
+    ::::.^::ssssS ::sSSssss:::::::..   .::::ssSSS^ ........  ..../ 
+    :::::.^:SsssS ::      ^::::::::sSS^::::sYssS:::::::::Ss ::ss.^.  
+     ^:::: ^SsssS ::       :::::sSSSss::::sSSsD:::::::::sss ::YsS. : 
+         ^: SsY:: ::        ^SSSSSssss:SSSSssssPsSSs.  SssS  :::ss : 
+          : s::^: ::          ^SssssP:::SssssPsSS^ ^^-.ssss  :::sP : 
+         .:::^  : ::           ^. ::::::::^:::SP       ^ss4s,^:ss.^ 
+        ^:=^    : ::            : ^::::::^ ^::          ^ssssSSY^  
+Python 2.7.9 (default, Jun 29 2016, 13:08:31) 
+[GCC 4.9.2] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+>>> 
+>>> #
+... # goal: make an integrator 
+... #
+... import time
+>>> import matplotlib.cm as cm
+>>> from scipy import interpolate
+>>> import matplotlib as mpl
+>>> 
+>>> 
+>>> import exptool.io.psp_io as psp_io
+>>> 
+>>> 
+>>> import exptool.basis.spheresl as spheresl
+>>> import exptool.basis.eof as eof
+>>> import exptool.utils.halo_methods as halo_methods
+>>> import exptool.analysis.trapping as trapping
+>>> import exptool.basis.potential as potential
+>>> import exptool.utils.integrate as integrate
+>>> import exptool.orbits.orbit as orbit
+>>> 
+>>> 
+>>> simulation_directory = '/scratch/mpetersen/Disk002/'
+>>> simulation_name = 'run002'
+>>> trapping_comp = 'star'
+>>> 
+>>> 
+>>> simulation_directory = '/scratch/mpetersen/Disk001/'
+>>> simulation_name = 'run001'
+>>> 
+>>> eof_file = simulation_directory+'.eof.cache.file'
+>>> sph_file = simulation_directory+'SLGridSph.cache.'+simulation_name
+>>> model_file = simulation_directory+'SLGridSph.model'
+>>> 
+>>> 
+>>> intime = 1000
+>>> 
+>>> F,pattern,rotfreq = potential.get_fields(simulation_directory,simulation_name,intime,eof_file,sph_file,model_file)
+potential.Fields.total_coefficients: Computing centering (centering=True)
+potential.Fields.total_coefficients: Using computed disk center for halo (mutual_center=True)
+potential.Fields.total_coefficients: (x,y,z) = 0.00001,-0.00007,0.00000
+eof.make_coefficients_multi: 16 processors, 62500 particles each.
+eof.make_coefficients_multi: Accumulation took 20.54 seconds, or 20.54 microseconds per orbit.
+sl.compute_coefficients: 16 processors, 62500 particles each.
+spheresl.compute_coefficients: accumulation took 85.34 seconds, or 85.34 microseconds per orbit.
+>>> 
+>>> 
+>>>     
+... #
+... 
+>>> 
+>>>     
+... #
+... # just look at a single orbit
+... #
+... nint = 1000
+>>> dt = 0.0003
+>>> max_m = 6
+>>> 
+>>> start_pos = [0.01,0.,0.]
+>>> start_vel = [0.,0.25,0.]
+>>> dtime = np.max([integrate.compute_timestep(F,start_pos,start_vel,dyn_res=80.,verbose=True),dt])
+The chosen time criteria is dtA, dt=0.00017
+>>> 
+>>> 
+>>> 
+>>> 
+>>> Orbit = integrate.leapfrog_integrate(F,nint,dtime,start_pos,start_vel,rotfreq=-1.*np.linspace(abs(rotfreq),0.9*abs(rotfreq),nint),no_odd=True,halo_l=2,disk_m=max_m,verbose=1,ap_max=10000)
+4.093 seconds to integrate.
+>>> 
+>>> 
+>>> plt.plot(Orbit['TX'],Orbit['TY'],color='black')
+[<matplotlib.lines.Line2D object at 0x7fe797ca6f90>]
+>>> Orbit = integrate.leapfrog_integrate(F,nint,dtime,start_pos,start_vel,rotfreq=-1.*abs(rotfreq),no_odd=True,halo_l=2,disk_m=max_m,verbose=1,ap_max=10000)
+4.065 seconds to integrate.
+>>> plt.plot(Orbit['TX'],Orbit['TY'],color='red')
+[<matplotlib.lines.Line2D object at 0x7fe7a01e3450>]
+>>> start_pos = [0.003,0.,0.]
+>>> start_vel = [0.,2.0,0.]
+>>> dtime = np.max([integrate.compute_timestep(F,start_pos,start_vel,dyn_res=80.,verbose=True),dt])
+The chosen time criteria is dtA, dt=0.00011
+>>> Orbit = integrate.leapfrog_integrate(F,nint,dtime,start_pos,start_vel,rotfreq=-1.*abs(rotfreq),no_odd=True,halo_l=2,disk_m=max_m,verbose=1,ap_max=10000)
+4.056 seconds to integrate.
+>>> plt.plot(Orbit['TX'],Orbit['TY'],color='red')
+[<matplotlib.lines.Line2D object at 0x7fe797bee5d0>]
+>>> start_pos = [0.002,0.,0.]
+>>> start_vel = [0.,1.3,0.]
+>>> Orbit = integrate.leapfrog_integrate(F,nint,dtime,start_pos,start_vel,rotfreq=-1.*abs(rotfreq),no_odd=True,halo_l=2,disk_m=max_m,verbose=1,ap_max=10000)
+4.049 seconds to integrate.
+>>> plt.plot(Orbit['TX'],Orbit['TY'],color='red')
+[<matplotlib.lines.Line2D object at 0x7fe797c02d10>]
+>>> start_pos = [0.001,0.,0.]
+>>> plt.clf()
+>>> Orbit = integrate.leapfrog_integrate(F,nint,dtime,start_pos,start_vel,rotfreq=-1.*abs(rotfreq),no_odd=True,halo_l=2,disk_m=max_m,verbose=1,ap_max=10000)
+4.100 seconds to integrate.
+>>> plt.plot(Orbit['TX'],Orbit['TY'],color='red')
+[<matplotlib.lines.Line2D object at 0x7fe79ffca290>]
+>>> packet_write_wait: Connection to 128.119.51.64 port 22: Broken pipe
+packet_write_wait: Connection to UNKNOWN port 65535: Broken pipe
+1x-nat-vl932-172-30-238-79:~ mpetersen$ ssh -X cluster
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Tue Aug 15 14:59:37 2017 from 172.30.51.254
+...............,#@@@@@:..............................................
+.............@@@@@@@@@@...@...............+;......@..................
+..........,@@@@@@@+.#@@..@@..............@@@....:@@..................
+.........@@@@@@+....@@,.+@+.............@@@#....@@@..................
+.........@@@@,.....;@@.,@@..............@+@....@@@@..................
+........+@@@@.....,@@..@@..............@@#@...#@,@:..................
+........+@@,......@@,.@@..............@@.@:...@@#@...................
+.................@@;.:@@.......@@@@...@@@@...@@,@,.....@@@...........
+................@@@@@@@@@#...,@@@@@..@@#@....@@@#....;@@@@:..........
+............:;@@@@@@@@@@@...,@@,@@:..@@@:...+@@@....;@@@@@@..........
+..........,@@@@@@@@@@@@@...;@@@@....#@@...+.@@...,.+@@.#@@.;.........
+...........#@@@...;@@......@@@,..:@.@@+..@#.@@..,@.@@..#@@@..........
+............@@;...@@;......@@@..@@:.@@@.@@..@@;;@+.+@:,@@@@..........
+...........@@@....@@+......;@@@@@:...@@@@...@@@@#...@@@@;............
+,,,,,,,,,,,@@,,,,,@@,,,,,,,,@@@@,,,,,@@@,,,,,@@+,,,,:@@,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,:@@@@,,,,,@#,,,,,+,,,,,,,,,,,,,,,,,@,,,,,,,,,,,,,,,,,,,,
+::::::::::;@@@@@@@::::@@@::::@@@::::::::::::::@@@::::::::::::::::::::
+::::::::::@@@@@@@@#:#@@@@::;@@@@:::::::::::::@@@:::::::::::::::::::::
+:::::::::@@@@@::#@:@@@@@@:#@@@@;:::::;::::::#@@#:::::::::::::::::::::
+:::::::::@@@@:::@@+@@:@@:#@@@@::::::@@@:::::@@@::::::::::::::::::::::
+:::::::::@@::::+@+@@:@@##@@@@+::::::@@+::::@@@:::::::::::::::::::::::
+:::::::::::::::@@@@:;@@#@@@@@:::::::+#::::@@@::::::::::;+::::::::::::
+::::::::::::::@@@@::@@@@@+@@:::::::@@::::@@@..@@;::::#@@@#:::::::::::
+:::::::::::::;@@@::@@@@@:@@;::::::@@@:::;@@#@@@@+:::@@@@@::::::::::::
+:::::::::::::@@@+::@@@@:@@@::::::@@@::::@@@@@+@@:::@@@;@@::::::::::::
+:::::::::::+@@@::@@@@::@@@::::+:@@;::+:@@@@;#@::@:@@@@;::@:::::::::::
+:::::::::::@@@::+@@@;::@@#::+@+:@@::@@:@@@@@@::@@:@@#:::@@:::::::::::
+::::::::::;@@@::@@@#::#@@#:@@:::@@@@@;:@@@@@@#@@::@@@.@@@::::::::::::
+:::::::::::@@:::@@@:::+@@@@@;:::@@@@;::@@::@@@@:::+@@@@@:::::::::::::
+:::::::::::;;:::;@:::::@@@@::::::@@::::::::;@@:::::@@@:::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+mpetersen@eagle:~$ squeue
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+             13812     debug     bash weinberg  R    6:47:05      1 node001
+             13927       eth   mkimg0 mmccrack  R      38:17      1 node032
+             13759       eth      s20 mmccrack  R 2-19:57:03      1 node003
+             13922        ib  omap003 mpeterse  R    4:45:11      1 node058
+             13926        ib     bash weinberg  R      40:48     16 node[016-031]
+mpetersen@eagle:~$ cd /scratch/mpetersen/Disk003
+mpetersen@eagle:/scratch/mpetersen/Disk003$ more omap.out 
+The time is: 250
+potential.Fields.total_coefficients: Computing centering (centering=True)
+potential.Fields.total_coefficients: Using computed disk center for halo (mutual_center=True)
+potential.Fields.total_coefficients: (x,y,z) = 0.00003,0.00007,0.00008
+eof.make_coefficients_multi: 16 processors, 62500 particles each.
+eof.accumulate      : [==                  ] 11%
+eof.accumulate      : [====                ] 23%
+eof.accumulate      : [=======             ] 36%
+eof.accumulate      : [=========           ] 49%
+eof.accumulate      : [============        ] 62%
+eof.accumulate      : [===============     ] 75%
+eof.accumulate      : [=================   ] 87%
+eof.make_coefficients_multi: Accumulation took 21.35 seconds, or 21.35 mi
+croseconds per orbit.
+sl.compute_coefficients: 16 processors, 62500 particles each.
+spheresl.compute_coefficients: [=                   ]  7%
+spheresl.compute_coefficients: [====                ] 19%
+spheresl.compute_coefficients: [======              ] 30%
+spheresl.compute_coefficients: [========            ] 41%
+spheresl.compute_coefficients: [==========          ] 52%
+spheresl.compute_coefficients: [============        ] 62%
+spheresl.compute_coefficients: [==============      ] 73%
+spheresl.compute_coefficients: [================    ] 84%
+spheresl.compute_coefficients: [=================== ] 95%
+spheresl.compute_coefficients: accumulation took 83.55 seconds, or 83.55 microseconds per orbit.
+Each processor has 8 radii.
+Beginning integration, using 16 processors.
+5.881 seconds to integrate.
+6.027 seconds to integrate.
+5.983 seconds to integrate.
+5.982 seconds to integrate.
+5.955 seconds to integrate.
+5.986 seconds to integrate.
+5.981 seconds to integrate.
+5.961 seconds to integrate.
+5.968 seconds to integrate.
+5.950 seconds to integrate.
+5.941 seconds to integrate.
+5.930 seconds to integrate.
+5.929 seconds to integrate.
+5.927 seconds to integrate.
+5.935 seconds to integrate.
+5.945 seconds to integrate.
+5.926 seconds to integrate.
+5.940 seconds to integrate.
+5.931 seconds to integrate.
+5.935 seconds to integrate.
+5.932 seconds to integrate.
+5.923 seconds to integrate.
+5.946 seconds to integrate.
+5.949 seconds to integrate.
+5.966 seconds to integrate.
+5.946 seconds to integrate.
+5.896 seconds to integrate.
+5.888 seconds to integrate.
+5.905 seconds to integrate.
+5.895 seconds to integrate.
+5.901 seconds to integrate.
+5.901 seconds to integrate.
+5.915 seconds to integrate.
+5.931 seconds to integrate.
+5.929 seconds to integrate.
+5.935 seconds to integrate.
+5.932 seconds to integrate.
+5.935 seconds to integrate.
+5.942 seconds to integrate.
+5.932 seconds to integrate.
+5.936 seconds to integrate.
+5.952 seconds to integrate.
+5.937 seconds to integrate.
+5.951 seconds to integrate.
+5.975 seconds to integrate.
+5.980 seconds to integrate.
+5.979 seconds to integrate.
+6.001 seconds to integrate.
+6.011 seconds to integrate.
+6.009 seconds to integrate.
+6.025 seconds to integrate.
+6.017 seconds to integrate.
+6.057 seconds to integrate.
+6.057 seconds to integrate.
+6.058 seconds to integrate.
+6.043 seconds to integrate.
+6.008 seconds to integrate.
+6.106 seconds to integrate.
+6.098 seconds to integrate.
+6.100 seconds to integrate.
+6.127 seconds to integrate.
+6.160 seconds to integrate.
+6.176 seconds to integrate.
+6.184 seconds to integrate.
+6.180 seconds to integrate.
+6.249 seconds to integrate.
+6.187 seconds to integrate.
+6.218 seconds to integrate.
+6.238 seconds to integrate.
+6.216 seconds to integrate.
+6.284 seconds to integrate.
+6.270 seconds to integrate.
+6.289 seconds to integrate.
+6.294 seconds to integrate.
+6.326 seconds to integrate.
+6.388 seconds to integrate.
+6.396 seconds to integrate.
+6.425 seconds to integrate.
+6.403 seconds to integrate.
+6.417 seconds to integrate.
+6.424 seconds to integrate.
+6.486 seconds to integrate.
+6.513 seconds to integrate.
+6.530 seconds to integrate.
+6.465 seconds to integrate.
+6.393 seconds to integrate.
+6.417 seconds to integrate.
+6.450 seconds to integrate.
+6.579 seconds to integrate.
+6.559 seconds to integrate.
+6.381 seconds to integrate.
+6.221 seconds to integrate.
+6.048 seconds to integrate.
+6.339 seconds to integrate.
+6.064 seconds to integrate.
+5.734 seconds to integrate.
+5.634 seconds to integrate.
+5.636 seconds to integrate.
+5.625 seconds to integrate.
+5.390 seconds to integrate.
+6.409 seconds to integrate.
+6.404 seconds to integrate.
+6.387 seconds to integrate.
+6.388 seconds to integrate.
+6.384 seconds to integrate.
+6.366 seconds to integrate.
+6.347 seconds to integrate.
+6.349 seconds to integrate.
+6.351 seconds to integrate.
+6.349 seconds to integrate.
+6.348 seconds to integrate.
+6.350 seconds to integrate.
+6.337 seconds to integrate.
+6.322 seconds to integrate.
+6.353 seconds to integrate.
+6.335 seconds to integrate.
+6.297 seconds to integrate.
+6.307 seconds to integrate.
+6.321 seconds to integrate.
+6.337 seconds to integrate.
+6.347 seconds to integrate.
+6.333 seconds to integrate.
+6.270 seconds to integrate.
+6.278 seconds to integrate.
+6.305 seconds to integrate.
+6.332 seconds to integrate.
+6.326 seconds to integrate.
+6.266 seconds to integrate.
+6.306 seconds to integrate.
+6.288 seconds to integrate.
+6.290 seconds to integrate.
+6.307 seconds to integrate.
+6.322 seconds to integrate.
+6.313 seconds to integrate.
+6.304 seconds to integrate.
+6.308 seconds to integrate.
+6.341 seconds to integrate.
+6.335 seconds to integrate.
+6.341 seconds to integrate.
+6.351 seconds to integrate.
+6.334 seconds to integrate.
+6.325 seconds to integrate.
+6.341 seconds to integrate.
+6.357 seconds to integrate.
+6.371 seconds to integrate.
+6.347 seconds to integrate.
+6.365 seconds to integrate.
+6.352 seconds to integrate.
+6.375 seconds to integrate.
+6.408 seconds to integrate.
+6.424 seconds to integrate.
+6.417 seconds to integrate.
+6.410 seconds to integrate.
+6.424 seconds to integrate.
+6.441 seconds to integrate.
+6.469 seconds to integrate.
+6.480 seconds to integrate.
+6.490 seconds to integrate.
+6.556 seconds to integrate.
+6.521 seconds to integrate.
+6.515 seconds to integrate.
+6.528 seconds to integrate.
+6.545 seconds to integrate.
+6.538 seconds to integrate.
+6.602 seconds to integrate.
+6.553 seconds to integrate.
+6.611 seconds to integrate.
+6.648 seconds to integrate.
+6.592 seconds to integrate.
+6.669 seconds to integrate.
+6.683 seconds to integrate.
+6.701 seconds to integrate.
+6.702 seconds to integrate.
+6.753 seconds to integrate.
+6.806 seconds to integrate.
+6.762 seconds to integrate.
+6.858 seconds to integrate.
+6.870 seconds to integrate.
+6.856 seconds to integrate.
+6.934 seconds to integrate.
+6.920 seconds to integrate.
+6.960 seconds to integrate.
+6.969 seconds to integrate.
+7.021 seconds to integrate.
+7.030 seconds to integrate.
+7.014 seconds to integrate.
+7.063 seconds to integrate.
+7.061 seconds to integrate.
+7.111 seconds to integrate.
+7.131 seconds to integrate.
+7.090 seconds to integrate.
+7.091 seconds to integrate.
+7.115 seconds to integrate.
+7.145 seconds to integrate.
+7.175 seconds to integrate.
+7.191 seconds to integrate.
+7.040 seconds to integrate.
+6.499 seconds to integrate.
+7.015 seconds to integrate.
+6.659 seconds to integrate.
+6.844 seconds to integrate.
+6.844 seconds to integrate.
+6.806 seconds to integrate.
+6.776 seconds to integrate.
+6.845 seconds to integrate.
+6.812 seconds to integrate.
+6.817 seconds to integrate.
+6.761 seconds to integrate.
+6.737 seconds to integrate.
+6.786 seconds to integrate.
+6.771 seconds to integrate.
+6.788 seconds to integrate.
+6.759 seconds to integrate.
+6.758 seconds to integrate.
+6.791 seconds to integrate.
+6.770 seconds to integrate.
+6.785 seconds to integrate.
+6.791 seconds to integrate.
+6.758 seconds to integrate.
+6.715 seconds to integrate.
+6.705 seconds to integrate.
+6.702 seconds to integrate.
+6.738 seconds to integrate.
+6.752 seconds to integrate.
+6.752 seconds to integrate.
+6.771 seconds to integrate.
+6.783 seconds to integrate.
+6.741 seconds to integrate.
+6.757 seconds to integrate.
+6.761 seconds to integrate.
+6.760 seconds to integrate.
+6.783 seconds to integrate.
+6.757 seconds to integrate.
+6.777 seconds to integrate.
+6.771 seconds to integrate.
+6.774 seconds to integrate.
+6.769 seconds to integrate.
+6.751 seconds to integrate.
+6.780 seconds to integrate.
+6.798 seconds to integrate.
+6.802 seconds to integrate.
+6.808 seconds to integrate.
+6.825 seconds to integrate.
+6.820 seconds to integrate.
+6.803 seconds to integrate.
+6.818 seconds to integrate.
+6.833 seconds to integrate.
+6.821 seconds to integrate.
+6.856 seconds to integrate.
+6.861 seconds to integrate.
+6.867 seconds to integrate.
+6.884 seconds to integrate.
+6.895 seconds to integrate.
+6.906 seconds to integrate.
+6.929 seconds to integrate.
+6.935 seconds to integrate.
+6.937 seconds to integrate.
+6.994 seconds to integrate.
+6.983 seconds to integrate.
+7.012 seconds to integrate.
+7.023 seconds to integrate.
+7.010 seconds to integrate.
+6.969 seconds to integrate.
+7.082 seconds to integrate.
+7.012 seconds to integrate.
+7.103 seconds to integrate.
+7.107 seconds to integrate.
+7.080 seconds to integrate.
+7.081 seconds to integrate.
+7.129 seconds to integrate.
+7.148 seconds to integrate.
+7.160 seconds to integrate.
+7.180 seconds to integrate.
+7.209 seconds to integrate.
+7.226 seconds to integrate.
+7.240 seconds to integrate.
+7.265 seconds to integrate.
+7.276 seconds to integrate.
+7.304 seconds to integrate.
+7.339 seconds to integrate.
+7.351 seconds to integrate.
+7.381 seconds to integrate.
+7.413 seconds to integrate.
+7.440 seconds to integrate.
+7.448 seconds to integrate.
+7.471 seconds to integrate.
+7.516 seconds to integrate.
+7.551 seconds to integrate.
+7.592 seconds to integrate.
+7.607 seconds to integrate.
+7.656 seconds to integrate.
+7.670 seconds to integrate.
+7.710 seconds to integrate.
+7.732 seconds to integrate.
+7.677 seconds to integrate.
+7.718 seconds to integrate.
+7.669 seconds to integrate.
+7.807 seconds to integrate.
+7.856 seconds to integrate.
+7.832 seconds to integrate.
+7.318 seconds to integrate.
+7.317 seconds to integrate.
+7.318 seconds to integrate.
+7.256 seconds to integrate.
+7.250 seconds to integrate.
+7.265 seconds to integrate.
+7.258 seconds to integrate.
+7.268 seconds to integrate.
+7.312 seconds to integrate.
+7.316 seconds to integrate.
+7.328 seconds to integrate.
+7.278 seconds to integrate.
+7.339 seconds to integrate.
+7.243 seconds to integrate.
+7.297 seconds to integrate.
+7.217 seconds to integrate.
+7.306 seconds to integrate.
+7.250 seconds to integrate.
+7.231 seconds to integrate.
+7.255 seconds to integrate.
+7.230 seconds to integrate.
+7.240 seconds to integrate.
+7.197 seconds to integrate.
+7.182 seconds to integrate.
+7.176 seconds to integrate.
+7.194 seconds to integrate.
+7.195 seconds to integrate.
+7.224 seconds to integrate.
+7.243 seconds to integrate.
+7.227 seconds to integrate.
+7.262 seconds to integrate.
+7.268 seconds to integrate.
+7.282 seconds to integrate.
+7.269 seconds to integrate.
+7.294 seconds to integrate.
+7.266 seconds to integrate.
+7.287 seconds to integrate.
+7.284 seconds to integrate.
+7.287 seconds to integrate.
+7.304 seconds to integrate.
+7.308 seconds to integrate.
+7.295 seconds to integrate.
+7.298 seconds to integrate.
+7.320 seconds to integrate.
+7.337 seconds to integrate.
+7.330 seconds to integrate.
+7.337 seconds to integrate.
+7.344 seconds to integrate.
+7.348 seconds to integrate.
+7.388 seconds to integrate.
+7.378 seconds to integrate.
+7.377 seconds to integrate.
+7.399 seconds to integrate.
+7.392 seconds to integrate.
+7.441 seconds to integrate.
+7.475 seconds to integrate.
+7.481 seconds to integrate.
+7.465 seconds to integrate.
+7.466 seconds to integrate.
+7.477 seconds to integrate.
+7.484 seconds to integrate.
+7.442 seconds to integrate.
+7.526 seconds to integrate.
+7.460 seconds to integrate.
+7.559 seconds to integrate.
+7.519 seconds to integrate.
+7.578 seconds to integrate.
+7.595 seconds to integrate.
+7.571 seconds to integrate.
+7.603 seconds to integrate.
+7.635 seconds to integrate.
+7.666 seconds to integrate.
+7.634 seconds to integrate.
+7.698 seconds to integrate.
+7.735 seconds to integrate.
+7.710 seconds to integrate.
+7.746 seconds to integrate.
+7.801 seconds to integrate.
+7.800 seconds to integrate.
+7.860 seconds to integrate.
+7.826 seconds to integrate.
+7.869 seconds to integrate.
+7.859 seconds to integrate.
+7.930 seconds to integrate.
+7.930 seconds to integrate.
+7.963 seconds to integrate.
+7.979 seconds to integrate.
+7.992 seconds to integrate.
+8.054 seconds to integrate.
+8.073 seconds to integrate.
+8.104 seconds to integrate.
+7.861 seconds to integrate.
+7.789 seconds to integrate.
+7.721 seconds to integrate.
+7.553 seconds to integrate.
+7.695 seconds to integrate.
+7.643 seconds to integrate.
+7.657 seconds to integrate.
+7.637 seconds to integrate.
+7.361 seconds to integrate.
+7.970 seconds to integrate.
+7.933 seconds to integrate.
+7.922 seconds to integrate.
+7.914 seconds to integrate.
+7.955 seconds to integrate.
+7.901 seconds to integrate.
+7.874 seconds to integrate.
+7.904 seconds to integrate.
+7.823 seconds to integrate.
+7.869 seconds to integrate.
+7.863 seconds to integrate.
+7.880 seconds to integrate.
+7.820 seconds to integrate.
+7.829 seconds to integrate.
+7.837 seconds to integrate.
+7.827 seconds to integrate.
+7.778 seconds to integrate.
+7.796 seconds to integrate.
+7.791 seconds to integrate.
+7.782 seconds to integrate.
+7.780 seconds to integrate.
+7.771 seconds to integrate.
+7.734 seconds to integrate.
+7.761 seconds to integrate.
+7.778 seconds to integrate.
+7.791 seconds to integrate.
+7.787 seconds to integrate.
+7.768 seconds to integrate.
+7.780 seconds to integrate.
+7.782 seconds to integrate.
+7.802 seconds to integrate.
+7.809 seconds to integrate.
+7.793 seconds to integrate.
+7.787 seconds to integrate.
+7.820 seconds to integrate.
+7.791 seconds to integrate.
+7.795 seconds to integrate.
+7.829 seconds to integrate.
+7.802 seconds to integrate.
+7.824 seconds to integrate.
+7.845 seconds to integrate.
+7.840 seconds to integrate.
+7.842 seconds to integrate.
+7.841 seconds to integrate.
+7.837 seconds to integrate.
+7.850 seconds to integrate.
+7.873 seconds to integrate.
+7.874 seconds to integrate.
+7.890 seconds to integrate.
+7.891 seconds to integrate.
+7.925 seconds to integrate.
+7.915 seconds to integrate.
+7.933 seconds to integrate.
+7.915 seconds to integrate.
+7.945 seconds to integrate.
+7.974 seconds to integrate.
+7.962 seconds to integrate.
+7.989 seconds to integrate.
+7.988 seconds to integrate.
+7.988 seconds to integrate.
+8.020 seconds to integrate.
+8.069 seconds to integrate.
+8.011 seconds to integrate.
+8.035 seconds to integrate.
+8.123 seconds to integrate.
+8.138 seconds to integrate.
+8.107 seconds to integrate.
+8.167 seconds to integrate.
+8.177 seconds to integrate.
+8.151 seconds to integrate.
+8.131 seconds to integrate.
+8.198 seconds to integrate.
+8.238 seconds to integrate.
+8.190 seconds to integrate.
+8.281 seconds to integrate.
+8.307 seconds to integrate.
+8.308 seconds to integrate.
+8.285 seconds to integrate.
+8.371 seconds to integrate.
+8.326 seconds to integrate.
+8.356 seconds to integrate.
+8.413 seconds to integrate.
+8.388 seconds to integrate.
+8.524 seconds to integrate.
+8.518 seconds to integrate.
+8.531 seconds to integrate.
+8.690 seconds to integrate.
+8.601 seconds to integrate.
+8.708 seconds to integrate.
+8.713 seconds to integrate.
+8.709 seconds to integrate.
+8.783 seconds to integrate.
+8.758 seconds to integrate.
+8.812 seconds to integrate.
+8.886 seconds to integrate.
+8.926 seconds to integrate.
+8.986 seconds to integrate.
+8.949 seconds to integrate.
+8.946 seconds to integrate.
+9.059 seconds to integrate.
+8.543 seconds to integrate.
+8.507 seconds to integrate.
+8.513 seconds to integrate.
+8.546 seconds to integrate.
+8.516 seconds to integrate.
+8.536 seconds to integrate.
+8.458 seconds to integrate.
+8.464 seconds to integrate.
+8.450 seconds to integrate.
+8.446 seconds to integrate.
+8.556 seconds to integrate.
+8.444 seconds to integrate.
+8.411 seconds to integrate.
+8.446 seconds to integrate.
+8.416 seconds to integrate.
+8.332 seconds to integrate.
+8.476 seconds to integrate.
+8.525 seconds to integrate.
+8.446 seconds to integrate.
+8.346 seconds to integrate.
+8.444 seconds to integrate.
+8.360 seconds to integrate.
+8.420 seconds to integrate.
+8.415 seconds to integrate.
+8.358 seconds to integrate.
+8.442 seconds to integrate.
+8.374 seconds to integrate.
+8.446 seconds to integrate.
+8.432 seconds to integrate.
+8.435 seconds to integrate.
+8.428 seconds to integrate.
+8.381 seconds to integrate.
+8.557 seconds to integrate.
+8.411 seconds to integrate.
+8.417 seconds to integrate.
+8.435 seconds to integrate.
+8.443 seconds to integrate.
+8.386 seconds to integrate.
+8.424 seconds to integrate.
+8.570 seconds to integrate.
+8.422 seconds to integrate.
+8.420 seconds to integrate.
+8.475 seconds to integrate.
+8.484 seconds to integrate.
+8.426 seconds to integrate.
+8.447 seconds to integrate.
+8.490 seconds to integrate.
+8.425 seconds to integrate.
+8.414 seconds to integrate.
+8.436 seconds to integrate.
+8.447 seconds to integrate.
+8.492 seconds to integrate.
+8.510 seconds to integrate.
+8.494 seconds to integrate.
+8.545 seconds to integrate.
+8.527 seconds to integrate.
+8.534 seconds to integrate.
+8.521 seconds to integrate.
+8.555 seconds to integrate.
+8.566 seconds to integrate.
+8.571 seconds to integrate.
+8.543 seconds to integrate.
+8.600 seconds to integrate.
+8.666 seconds to integrate.
+8.632 seconds to integrate.
+8.646 seconds to integrate.
+8.761 seconds to integrate.
+8.735 seconds to integrate.
+8.787 seconds to integrate.
+8.720 seconds to integrate.
+8.645 seconds to integrate.
+8.698 seconds to integrate.
+8.793 seconds to integrate.
+8.748 seconds to integrate.
+8.790 seconds to integrate.
+8.775 seconds to integrate.
+8.835 seconds to integrate.
+8.919 seconds to integrate.
+8.945 seconds to integrate.
+8.966 seconds to integrate.
+8.954 seconds to integrate.
+8.938 seconds to integrate.
+9.033 seconds to integrate.
+9.063 seconds to integrate.
+9.071 seconds to integrate.
+9.056 seconds to integrate.
+9.111 seconds to integrate.
+9.160 seconds to integrate.
+9.203 seconds to integrate.
+9.240 seconds to integrate.
+9.270 seconds to integrate.
+9.220 seconds to integrate.
+9.374 seconds to integrate.
+9.319 seconds to integrate.
+9.416 seconds to integrate.
+9.439 seconds to integrate.
+9.504 seconds to integrate.
+9.497 seconds to integrate.
+9.654 seconds to integrate.
+9.663 seconds to integrate.
+9.192 seconds to integrate.
+9.141 seconds to integrate.
+9.171 seconds to integrate.
+9.124 seconds to integrate.
+9.109 seconds to integrate.
+9.080 seconds to integrate.
+9.063 seconds to integrate.
+9.090 seconds to integrate.
+9.056 seconds to integrate.
+9.018 seconds to integrate.
+9.062 seconds to integrate.
+9.024 seconds to integrate.
+9.055 seconds to integrate.
+9.011 seconds to integrate.
+9.101 seconds to integrate.
+8.975 seconds to integrate.
+8.936 seconds to integrate.
+9.005 seconds to integrate.
+8.978 seconds to integrate.
+8.943 seconds to integrate.
+8.997 seconds to integrate.
+8.974 seconds to integrate.
+8.967 seconds to integrate.
+9.036 seconds to integrate.
+9.068 seconds to integrate.
+9.094 seconds to integrate.
+9.089 seconds to integrate.
+8.982 seconds to integrate.
+9.011 seconds to integrate.
+9.053 seconds to integrate.
+8.997 seconds to integrate.
+9.012 seconds to integrate.
+8.982 seconds to integrate.
+9.035 seconds to integrate.
+8.954 seconds to integrate.
+8.996 seconds to integrate.
+8.974 seconds to integrate.
+8.967 seconds to integrate.
+8.969 seconds to integrate.
+8.951 seconds to integrate.
+8.978 seconds to integrate.
+9.044 seconds to integrate.
+8.995 seconds to integrate.
+9.011 seconds to integrate.
+9.025 seconds to integrate.
+9.006 seconds to integrate.
+9.074 seconds to integrate.
+9.026 seconds to integrate.
+9.025 seconds to integrate.
+9.046 seconds to integrate.
+9.049 seconds to integrate.
+9.041 seconds to integrate.
+9.025 seconds to integrate.
+9.050 seconds to integrate.
+9.104 seconds to integrate.
+9.098 seconds to integrate.
+9.103 seconds to integrate.
+9.158 seconds to integrate.
+9.140 seconds to integrate.
+9.149 seconds to integrate.
+9.346 seconds to integrate.
+9.245 seconds to integrate.
+9.268 seconds to integrate.
+9.271 seconds to integrate.
+9.335 seconds to integrate.
+9.149 seconds to integrate.
+9.207 seconds to integrate.
+9.275 seconds to integrate.
+9.450 seconds to integrate.
+9.388 seconds to integrate.
+9.284 seconds to integrate.
+9.448 seconds to integrate.
+9.365 seconds to integrate.
+9.452 seconds to integrate.
+9.364 seconds to integrate.
+9.436 seconds to integrate.
+9.419 seconds to integrate.
+9.458 seconds to integrate.
+9.494 seconds to integrate.
+9.472 seconds to integrate.
+9.529 seconds to integrate.
+9.614 seconds to integrate.
+9.520 seconds to integrate.
+9.593 seconds to integrate.
+9.637 seconds to integrate.
+9.657 seconds to integrate.
+9.596 seconds to integrate.
+9.758 seconds to integrate.
+9.738 seconds to integrate.
+9.651 seconds to integrate.
+9.680 seconds to integrate.
+9.982 seconds to integrate.
+9.840 seconds to integrate.
+9.989 seconds to integrate.
+9.996 seconds to integrate.
+9.988 seconds to integrate.
+10.047 seconds to integrate.
+10.128 seconds to integrate.
+10.121 seconds to integrate.
+10.203 seconds to integrate.
+9.905 seconds to integrate.
+9.888 seconds to integrate.
+9.905 seconds to integrate.
+9.887 seconds to integrate.
+9.847 seconds to integrate.
+9.742 seconds to integrate.
+9.725 seconds to integrate.
+9.788 seconds to integrate.
+9.703 seconds to integrate.
+9.853 seconds to integrate.
+9.766 seconds to integrate.
+9.748 seconds to integrate.
+9.691 seconds to integrate.
+9.750 seconds to integrate.
+9.667 seconds to integrate.
+9.746 seconds to integrate.
+9.800 seconds to integrate.
+9.649 seconds to integrate.
+9.659 seconds to integrate.
+9.702 seconds to integrate.
+9.659 seconds to integrate.
+9.627 seconds to integrate.
+9.693 seconds to integrate.
+9.598 seconds to integrate.
+9.629 seconds to integrate.
+9.622 seconds to integrate.
+9.608 seconds to integrate.
+9.624 seconds to integrate.
+9.578 seconds to integrate.
+9.571 seconds to integrate.
+9.528 seconds to integrate.
+9.511 seconds to integrate.
+9.524 seconds to integrate.
+9.504 seconds to integrate.
+9.530 seconds to integrate.
+9.521 seconds to integrate.
+9.523 seconds to integrate.
+9.559 seconds to integrate.
+9.567 seconds to integrate.
+9.586 seconds to integrate.
+9.547 seconds to integrate.
+9.548 seconds to integrate.
+9.575 seconds to integrate.
+9.571 seconds to integrate.
+9.515 seconds to integrate.
+9.564 seconds to integrate.
+9.549 seconds to integrate.
+9.587 seconds to integrate.
+9.628 seconds to integrate.
+9.652 seconds to integrate.
+9.664 seconds to integrate.
+9.623 seconds to integrate.
+9.614 seconds to integrate.
+9.642 seconds to integrate.
+9.663 seconds to integrate.
+9.677 seconds to integrate.
+9.696 seconds to integrate.
+9.675 seconds to integrate.
+9.687 seconds to integrate.
+9.746 seconds to integrate.
+9.666 seconds to integrate.
+9.729 seconds to integrate.
+9.714 seconds to integrate.
+9.716 seconds to integrate.
+9.672 seconds to integrate.
+9.807 seconds to integrate.
+9.838 seconds to integrate.
+9.809 seconds to integrate.
+9.881 seconds to integrate.
+9.839 seconds to integrate.
+9.835 seconds to integrate.
+9.901 seconds to integrate.
+9.851 seconds to integrate.
+9.934 seconds to integrate.
+9.913 seconds to integrate.
+9.842 seconds to integrate.
+9.990 seconds to integrate.
+10.084 seconds to integrate.
+10.215 seconds to integrate.
+10.093 seconds to integrate.
+10.220 seconds to integrate.
+10.089 seconds to integrate.
+10.186 seconds to integrate.
+10.372 seconds to integrate.
+10.258 seconds to integrate.
+10.358 seconds to integrate.
+10.418 seconds to integrate.
+10.348 seconds to integrate.
+10.408 seconds to integrate.
+10.546 seconds to integrate.
+10.396 seconds to integrate.
+10.456 seconds to integrate.
+10.433 seconds to integrate.
+10.393 seconds to integrate.
+10.368 seconds to integrate.
+10.487 seconds to integrate.
+10.376 seconds to integrate.
+10.405 seconds to integrate.
+10.423 seconds to integrate.
+10.424 seconds to integrate.
+Total integration calculation took 8388.77 seconds, or 0.66 seconds per orbit.
+The time is: 300
+potential.Fields.total_coefficients: Computing centering (centering=True)
+potential.Fields.total_coefficients: Using computed disk center for halo (mutual_center=True)
+potential.Fields.total_coefficients: (x,y,z) = -0.00003,-0.00001,0.00007
+eof.make_coefficients_multi: 16 processors, 62500 particles each.
+eof.accumulate      : [==                  ] 11%
+eof.accumulate      : [====                ] 23%
+eof.accumulate      : [=======             ] 36%
+eof.accumulate      : [=========           ] 49%
+eof.accumulate      : [============        ] 62%
+eof.accumulate      : [===============     ] 75%
+eof.accumulate      : [=================   ] 87%
+eof.make_coefficients_multi: Accumulation took 21.36 seconds, or 21.36 mi
+croseconds per orbit.
+sl.compute_coefficients: 16 processors, 62500 particles each.
+spheresl.compute_coefficients: [=                   ]  7%
+spheresl.compute_coefficients: [====                ] 19%
+spheresl.compute_coefficients: [======              ] 30%
+spheresl.compute_coefficients: [========            ] 41%
+spheresl.compute_coefficients: [==========          ] 52%
+spheresl.compute_coefficients: [============        ] 62%
+spheresl.compute_coefficients: [==============      ] 73%
+spheresl.compute_coefficients: [================    ] 84%
+spheresl.compute_coefficients: [=================== ] 95%
+spheresl.compute_coefficients: accumulation took 83.45 seconds, or 83.45 microseconds per orbit.
+Each processor has 8 radii.
+Beginning integration, using 16 processors.
+5.859 seconds to integrate.
+5.755 seconds to integrate.
+5.773 seconds to integrate.
+5.744 seconds to integrate.
+5.702 seconds to integrate.
+5.710 seconds to integrate.
+5.687 seconds to integrate.
+5.674 seconds to integrate.
+5.694 seconds to integrate.
+5.679 seconds to integrate.
+5.686 seconds to integrate.
+5.685 seconds to integrate.
+5.680 seconds to integrate.
+5.661 seconds to integrate.
+5.654 seconds to integrate.
+5.712 seconds to integrate.
+5.665 seconds to integrate.
+5.643 seconds to integrate.
+5.648 seconds to integrate.
+5.650 seconds to integrate.
+5.656 seconds to integrate.
+5.680 seconds to integrate.
+5.664 seconds to integrate.
+5.679 seconds to integrate.
+5.659 seconds to integrate.
+5.653 seconds to integrate.
+5.668 seconds to integrate.
+5.653 seconds to integrate.
+5.660 seconds to integrate.
+5.666 seconds to integrate.
+5.665 seconds to integrate.
+5.667 seconds to integrate.
+5.662 seconds to integrate.
+5.670 seconds to integrate.
+5.662 seconds to integrate.
+5.658 seconds to integrate.
+5.658 seconds to integrate.
+5.652 seconds to integrate.
+5.666 seconds to integrate.
+5.694 seconds to integrate.
+5.677 seconds to integrate.
+5.705 seconds to integrate.
+5.686 seconds to integrate.
+5.756 seconds to integrate.
+5.756 seconds to integrate.
+5.751 seconds to integrate.
+5.771 seconds to integrate.
+5.781 seconds to integrate.
+5.764 seconds to integrate.
+5.773 seconds to integrate.
+5.833 seconds to integrate.
+5.817 seconds to integrate.
+5.803 seconds to integrate.
+5.799 seconds to integrate.
+5.780 seconds to integrate.
+5.769 seconds to integrate.
+5.822 seconds to integrate.
+5.809 seconds to integrate.
+5.840 seconds to integrate.
+5.842 seconds to integrate.
+5.845 seconds to integrate.
+5.844 seconds to integrate.
+5.847 seconds to integrate.
+5.860 seconds to integrate.
+5.879 seconds to integrate.
+5.891 seconds to integrate.
+5.914 seconds to integrate.
+5.937 seconds to integrate.
+5.928 seconds to integrate.
+5.951 seconds to integrate.
+6.018 seconds to integrate.
+5.972 seconds to integrate.
+5.996 seconds to integrate.
+6.043 seconds to integrate.
+6.031 seconds to integrate.
+6.102 seconds to integrate.
+6.096 seconds to integrate.
+6.097 seconds to integrate.
+6.138 seconds to integrate.
+6.118 seconds to integrate.
+6.301 seconds to integrate.
+6.179 seconds to integrate.
+6.167 seconds to integrate.
+6.213 seconds to integrate.
+6.251 seconds to integrate.
+6.272 seconds to integrate.
+6.282 seconds to integrate.
+6.232 seconds to integrate.
+6.277 seconds to integrate.
+6.263 seconds to integrate.
+6.310 seconds to integrate.
+6.216 seconds to integrate.
+6.246 seconds to integrate.
+6.197 seconds to integrate.
+6.178 seconds to integrate.
+6.175 seconds to integrate.
+6.051 seconds to integrate.
+5.979 seconds to integrate.
+5.749 seconds to integrate.
+5.579 seconds to integrate.
+6.267 seconds to integrate.
+6.109 seconds to integrate.
+6.122 seconds to integrate.
+6.083 seconds to integrate.
+6.069 seconds to integrate.
+6.095 seconds to integrate.
+6.071 seconds to integrate.
+6.063 seconds to integrate.
+6.049 seconds to integrate.
+6.050 seconds to integrate.
+6.080 seconds to integrate.
+6.037 seconds to integrate.
+6.117 seconds to integrate.
+6.063 seconds to integrate.
+6.038 seconds to integrate.
+6.073 seconds to integrate.
+6.033 seconds to integrate.
+6.019 seconds to integrate.
+6.043 seconds to integrate.
+6.031 seconds to integrate.
+6.042 seconds to integrate.
+6.033 seconds to integrate.
+6.017 seconds to integrate.
+6.037 seconds to integrate.
+6.041 seconds to integrate.
+6.067 seconds to integrate.
+6.086 seconds to integrate.
+6.038 seconds to integrate.
+6.007 seconds to integrate.
+6.143 seconds to integrate.
+6.067 seconds to integrate.
+6.046 seconds to integrate.
+6.081 seconds to integrate.
+6.082 seconds to integrate.
+6.081 seconds to integrate.
+6.063 seconds to integrate.
+6.074 seconds to integrate.
+6.039 seconds to integrate.
+6.056 seconds to integrate.
+6.224 seconds to integrate.
+6.065 seconds to integrate.
+6.132 seconds to integrate.
+6.160 seconds to integrate.
+6.126 seconds to integrate.
+6.135 seconds to integrate.
+6.149 seconds to integrate.
+6.109 seconds to integrate.
+6.032 seconds to integrate.
+6.092 seconds to integrate.
+6.272 seconds to integrate.
+6.102 seconds to integrate.
+6.082 seconds to integrate.
+6.119 seconds to integrate.
+6.110 seconds to integrate.
+6.144 seconds to integrate.
+6.156 seconds to integrate.
+6.178 seconds to integrate.
+6.241 seconds to integrate.
+6.219 seconds to integrate.
+6.252 seconds to integrate.
+6.247 seconds to integrate.
+6.236 seconds to integrate.
+6.270 seconds to integrate.
+6.235 seconds to integrate.
+6.249 seconds to integrate.
+6.247 seconds to integrate.
+6.294 seconds to integrate.
+6.343 seconds to integrate.
+6.340 seconds to integrate.
+6.326 seconds to integrate.
+6.335 seconds to integrate.
+6.416 seconds to integrate.
+6.393 seconds to integrate.
+6.408 seconds to integrate.
+6.423 seconds to integrate.
+6.447 seconds to integrate.
+6.449 seconds to integrate.
+6.472 seconds to integrate.
+6.531 seconds to integrate.
+6.492 seconds to integrate.
+6.528 seconds to integrate.
+6.590 seconds to integrate.
+6.609 seconds to integrate.
+6.664 seconds to integrate.
+6.631 seconds to integrate.
+6.590 seconds to integrate.
+6.650 seconds to integrate.
+6.816 seconds to integrate.
+6.167 seconds to integrate.
+6.521 seconds to integrate.
+6.540 seconds to integrate.
+6.603 seconds to integrate.
+6.511 seconds to integrate.
+6.548 seconds to integrate.
+6.496 seconds to integrate.
+6.434 seconds to integrate.
+6.594 seconds to integrate.
+6.301 seconds to integrate.
+6.304 seconds to integrate.
+6.047 seconds to integrate.
+6.635 seconds to integrate.
+6.606 seconds to integrate.
+6.578 seconds to integrate.
+6.625 seconds to integrate.
+6.488 seconds to integrate.
+6.597 seconds to integrate.
+6.610 seconds to integrate.
+6.588 seconds to integrate.
+6.583 seconds to integrate.
+6.562 seconds to integrate.
+6.514 seconds to integrate.
+6.558 seconds to integrate.
+6.583 seconds to integrate.
+6.513 seconds to integrate.
+6.689 seconds to integrate.
+6.492 seconds to integrate.
+6.568 seconds to integrate.
+6.561 seconds to integrate.
+6.533 seconds to integrate.
+6.518 seconds to integrate.
+6.480 seconds to integrate.
+6.496 seconds to integrate.
+6.512 seconds to integrate.
+6.632 seconds to integrate.
+6.569 seconds to integrate.
+6.491 seconds to integrate.
+6.423 seconds to integrate.
+6.432 seconds to integrate.
+6.452 seconds to integrate.
+6.427 seconds to integrate.
+6.541 seconds to integrate.
+6.497 seconds to integrate.
+6.569 seconds to integrate.
+6.601 seconds to integrate.
+6.517 seconds to integrate.
+6.505 seconds to integrate.
+6.523 seconds to integrate.
+6.553 seconds to integrate.
+6.545 seconds to integrate.
+6.546 seconds to integrate.
+6.528 seconds to integrate.
+6.539 seconds to integrate.
+6.524 seconds to integrate.
+6.546 seconds to integrate.
+6.514 seconds to integrate.
+6.558 seconds to integrate.
+6.560 seconds to integrate.
+6.569 seconds to integrate.
+6.589 seconds to integrate.
+6.676 seconds to integrate.
+6.612 seconds to integrate.
+6.657 seconds to integrate.
+6.636 seconds to integrate.
+6.716 seconds to integrate.
+6.678 seconds to integrate.
+6.702 seconds to integrate.
+6.680 seconds to integrate.
+6.678 seconds to integrate.
+6.666 seconds to integrate.
+6.633 seconds to integrate.
+6.700 seconds to integrate.
+6.716 seconds to integrate.
+6.768 seconds to integrate.
+6.702 seconds to integrate.
+6.755 seconds to integrate.
+6.759 seconds to integrate.
+6.805 seconds to integrate.
+6.792 seconds to integrate.
+6.796 seconds to integrate.
+6.924 seconds to integrate.
+6.821 seconds to integrate.
+6.818 seconds to integrate.
+6.891 seconds to integrate.
+6.880 seconds to integrate.
+6.893 seconds to integrate.
+6.948 seconds to integrate.
+6.942 seconds to integrate.
+7.136 seconds to integrate.
+6.959 seconds to integrate.
+mpetersen@eagle:/scratch/mpetersen/Disk003$ ls omap*
+omap_250_m2n1.txt  omap_300_m2n1.txt  omap.out
+mpetersen@eagle:/scratch/mpetersen/Disk003$ packet_write_wait: Connection to 128.119.51.64 port 22: Broken pipe
+packet_write_wait: Connection to UNKNOWN port 65535: Broken pipe
+1x-nat-vl932-172-30-238-79:~ mpetersen$ ssh -X cluster
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Tue Aug 15 19:53:46 2017 from 172.30.51.254
+...............,#@@@@@:..............................................
+.............@@@@@@@@@@...@...............+;......@..................
+..........,@@@@@@@+.#@@..@@..............@@@....:@@..................
+.........@@@@@@+....@@,.+@+.............@@@#....@@@..................
+.........@@@@,.....;@@.,@@..............@+@....@@@@..................
+........+@@@@.....,@@..@@..............@@#@...#@,@:..................
+........+@@,......@@,.@@..............@@.@:...@@#@...................
+.................@@;.:@@.......@@@@...@@@@...@@,@,.....@@@...........
+................@@@@@@@@@#...,@@@@@..@@#@....@@@#....;@@@@:..........
+............:;@@@@@@@@@@@...,@@,@@:..@@@:...+@@@....;@@@@@@..........
+..........,@@@@@@@@@@@@@...;@@@@....#@@...+.@@...,.+@@.#@@.;.........
+...........#@@@...;@@......@@@,..:@.@@+..@#.@@..,@.@@..#@@@..........
+............@@;...@@;......@@@..@@:.@@@.@@..@@;;@+.+@:,@@@@..........
+...........@@@....@@+......;@@@@@:...@@@@...@@@@#...@@@@;............
+,,,,,,,,,,,@@,,,,,@@,,,,,,,,@@@@,,,,,@@@,,,,,@@+,,,,:@@,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,:@@@@,,,,,@#,,,,,+,,,,,,,,,,,,,,,,,@,,,,,,,,,,,,,,,,,,,,
+::::::::::;@@@@@@@::::@@@::::@@@::::::::::::::@@@::::::::::::::::::::
+::::::::::@@@@@@@@#:#@@@@::;@@@@:::::::::::::@@@:::::::::::::::::::::
+:::::::::@@@@@::#@:@@@@@@:#@@@@;:::::;::::::#@@#:::::::::::::::::::::
+:::::::::@@@@:::@@+@@:@@:#@@@@::::::@@@:::::@@@::::::::::::::::::::::
+:::::::::@@::::+@+@@:@@##@@@@+::::::@@+::::@@@:::::::::::::::::::::::
+:::::::::::::::@@@@:;@@#@@@@@:::::::+#::::@@@::::::::::;+::::::::::::
+::::::::::::::@@@@::@@@@@+@@:::::::@@::::@@@..@@;::::#@@@#:::::::::::
+:::::::::::::;@@@::@@@@@:@@;::::::@@@:::;@@#@@@@+:::@@@@@::::::::::::
+:::::::::::::@@@+::@@@@:@@@::::::@@@::::@@@@@+@@:::@@@;@@::::::::::::
+:::::::::::+@@@::@@@@::@@@::::+:@@;::+:@@@@;#@::@:@@@@;::@:::::::::::
+:::::::::::@@@::+@@@;::@@#::+@+:@@::@@:@@@@@@::@@:@@#:::@@:::::::::::
+::::::::::;@@@::@@@#::#@@#:@@:::@@@@@;:@@@@@@#@@::@@@.@@@::::::::::::
+:::::::::::@@:::@@@:::+@@@@@;:::@@@@;::@@::@@@@:::+@@@@@:::::::::::::
+:::::::::::;;:::;@:::::@@@@::::::@@::::::::;@@:::::@@@:::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+mpetersen@eagle:~$ cd /scratch/mpetersen/Disk003
+mpetersen@eagle:/scratch/mpetersen/Disk003$ ls omap*
+omap_250_m2n1.txt  omap_300_m2n1.txt  omap_350_m2n1.txt  omap.out
+mpetersen@eagle:/scratch/mpetersen/Disk003$ ls -lah omap*
+-rw-r--r-- 1 mpetersen mpetersen 663M Aug 15 17:32 omap_250_m2n1.txt
+-rw-r--r-- 1 mpetersen mpetersen 662M Aug 15 19:55 omap_300_m2n1.txt
+-rw-r--r-- 1 mpetersen mpetersen 661M Aug 15 22:19 omap_350_m2n1.txt
+-rw-r--r-- 1 mpetersen mpetersen  95K Aug 15 22:21 omap.out
+mpetersen@eagle:/scratch/mpetersen/Disk003$ cd ../Disk010
+mpetersen@eagle:/scratch/mpetersen/Disk010$ ls
+!                               OUT.run010.00493  OUT.run010.01001  OUT.run010.01509
+current.processor.rates.run010  OUT.run010.00494  OUT.run010.01002  OUT.run010.01510
+dark.orient.run010              OUT.run010.00495  OUT.run010.01003  OUT.run010.01511
+diagnostics                     OUT.run010.00496  OUT.run010.01004  OUT.run010.01512
+disk010.bods                    OUT.run010.00497  OUT.run010.01005  OUT.run010.01513
+disk010.conf                    OUT.run010.00498  OUT.run010.01006  OUT.run010.01514
+dv2table.dump                   OUT.run010.00499  OUT.run010.01007  OUT.run010.01515
+exp.in                          OUT.run010.00500  OUT.run010.01008  OUT.run010.01516
+gendisk010.in                   OUT.run010.00501  OUT.run010.01009  OUT.run010.01517
+gendisk010.out                  OUT.run010.00502  OUT.run010.01010  OUT.run010.01518
+halo010.bods                    OUT.run010.00503  OUT.run010.01011  OUT.run010.01519
+halo010.conf                    OUT.run010.00504  OUT.run010.01012  OUT.run010.01520
+job-node005-13750.out           OUT.run010.00505  OUT.run010.01013  OUT.run010.01521
+job-node006-13748.out           OUT.run010.00506  OUT.run010.01014  OUT.run010.01522
+OUTLOG.run010                   OUT.run010.00507  OUT.run010.01015  OUT.run010.01523
+OUT.run010.00000                OUT.run010.00508  OUT.run010.01016  OUT.run010.01524
+OUT.run010.00001                OUT.run010.00509  OUT.run010.01017  OUT.run010.01525
+OUT.run010.00002                OUT.run010.00510  OUT.run010.01018  OUT.run010.01526
+OUT.run010.00003                OUT.run010.00511  OUT.run010.01019  OUT.run010.01527
+OUT.run010.00004                OUT.run010.00512  OUT.run010.01020  OUT.run010.01528
+OUT.run010.00005                OUT.run010.00513  OUT.run010.01021  OUT.run010.01529
+OUT.run010.00006                OUT.run010.00514  OUT.run010.01022  OUT.run010.01530
+OUT.run010.00007                OUT.run010.00515  OUT.run010.01023  OUT.run010.01531
+OUT.run010.00008                OUT.run010.00516  OUT.run010.01024  OUT.run010.01532
+OUT.run010.00009                OUT.run010.00517  OUT.run010.01025  OUT.run010.01533
+OUT.run010.00010                OUT.run010.00518  OUT.run010.01026  OUT.run010.01534
+OUT.run010.00011                OUT.run010.00519  OUT.run010.01027  OUT.run010.01535
+OUT.run010.00012                OUT.run010.00520  OUT.run010.01028  OUT.run010.01536
+OUT.run010.00013                OUT.run010.00521  OUT.run010.01029  OUT.run010.01537
+OUT.run010.00014                OUT.run010.00522  OUT.run010.01030  OUT.run010.01538
+OUT.run010.00015                OUT.run010.00523  OUT.run010.01031  OUT.run010.01539
+OUT.run010.00016                OUT.run010.00524  OUT.run010.01032  OUT.run010.01540
+OUT.run010.00017                OUT.run010.00525  OUT.run010.01033  OUT.run010.01541
+OUT.run010.00018                OUT.run010.00526  OUT.run010.01034  OUT.run010.01542
+OUT.run010.00019                OUT.run010.00527  OUT.run010.01035  OUT.run010.01543
+OUT.run010.00020                OUT.run010.00528  OUT.run010.01036  OUT.run010.01544
+OUT.run010.00021                OUT.run010.00529  OUT.run010.01037  OUT.run010.01545
+OUT.run010.00022                OUT.run010.00530  OUT.run010.01038  OUT.run010.01546
+OUT.run010.00023                OUT.run010.00531  OUT.run010.01039  OUT.run010.01547
+OUT.run010.00024                OUT.run010.00532  OUT.run010.01040  OUT.run010.01548
+OUT.run010.00025                OUT.run010.00533  OUT.run010.01041  OUT.run010.01549
+OUT.run010.00026                OUT.run010.00534  OUT.run010.01042  OUT.run010.01550
+OUT.run010.00027                OUT.run010.00535  OUT.run010.01043  OUT.run010.01551
+OUT.run010.00028                OUT.run010.00536  OUT.run010.01044  OUT.run010.01552
+OUT.run010.00029                OUT.run010.00537  OUT.run010.01045  OUT.run010.01553
+OUT.run010.00030                OUT.run010.00538  OUT.run010.01046  OUT.run010.01554
+OUT.run010.00031                OUT.run010.00539  OUT.run010.01047  OUT.run010.01555
+OUT.run010.00032                OUT.run010.00540  OUT.run010.01048  OUT.run010.01556
+OUT.run010.00033                OUT.run010.00541  OUT.run010.01049  OUT.run010.01557
+OUT.run010.00034                OUT.run010.00542  OUT.run010.01050  OUT.run010.01558
+OUT.run010.00035                OUT.run010.00543  OUT.run010.01051  OUT.run010.01559
+OUT.run010.00036                OUT.run010.00544  OUT.run010.01052  OUT.run010.01560
+OUT.run010.00037                OUT.run010.00545  OUT.run010.01053  OUT.run010.01561
+OUT.run010.00038                OUT.run010.00546  OUT.run010.01054  OUT.run010.01562
+OUT.run010.00039                OUT.run010.00547  OUT.run010.01055  OUT.run010.01563
+OUT.run010.00040                OUT.run010.00548  OUT.run010.01056  OUT.run010.01564
+OUT.run010.00041                OUT.run010.00549  OUT.run010.01057  OUT.run010.01565
+OUT.run010.00042                OUT.run010.00550  OUT.run010.01058  OUT.run010.01566
+OUT.run010.00043                OUT.run010.00551  OUT.run010.01059  OUT.run010.01567
+OUT.run010.00044                OUT.run010.00552  OUT.run010.01060  OUT.run010.01568
+OUT.run010.00045                OUT.run010.00553  OUT.run010.01061  OUT.run010.01569
+OUT.run010.00046                OUT.run010.00554  OUT.run010.01062  OUT.run010.01570
+OUT.run010.00047                OUT.run010.00555  OUT.run010.01063  OUT.run010.01571
+OUT.run010.00048                OUT.run010.00556  OUT.run010.01064  OUT.run010.01572
+OUT.run010.00049                OUT.run010.00557  OUT.run010.01065  OUT.run010.01573
+OUT.run010.00050                OUT.run010.00558  OUT.run010.01066  OUT.run010.01574
+OUT.run010.00051                OUT.run010.00559  OUT.run010.01067  OUT.run010.01575
+OUT.run010.00052                OUT.run010.00560  OUT.run010.01068  OUT.run010.01576
+OUT.run010.00053                OUT.run010.00561  OUT.run010.01069  OUT.run010.01577
+OUT.run010.00054                OUT.run010.00562  OUT.run010.01070  OUT.run010.01578
+OUT.run010.00055                OUT.run010.00563  OUT.run010.01071  OUT.run010.01579
+OUT.run010.00056                OUT.run010.00564  OUT.run010.01072  OUT.run010.01580
+OUT.run010.00057                OUT.run010.00565  OUT.run010.01073  OUT.run010.01581
+OUT.run010.00058                OUT.run010.00566  OUT.run010.01074  OUT.run010.01582
+OUT.run010.00059                OUT.run010.00567  OUT.run010.01075  OUT.run010.01583
+OUT.run010.00060                OUT.run010.00568  OUT.run010.01076  OUT.run010.01584
+OUT.run010.00061                OUT.run010.00569  OUT.run010.01077  OUT.run010.01585
+OUT.run010.00062                OUT.run010.00570  OUT.run010.01078  OUT.run010.01586
+OUT.run010.00063                OUT.run010.00571  OUT.run010.01079  OUT.run010.01587
+OUT.run010.00064                OUT.run010.00572  OUT.run010.01080  OUT.run010.01588
+OUT.run010.00065                OUT.run010.00573  OUT.run010.01081  OUT.run010.01589
+OUT.run010.00066                OUT.run010.00574  OUT.run010.01082  OUT.run010.01590
+OUT.run010.00067                OUT.run010.00575  OUT.run010.01083  OUT.run010.01591
+OUT.run010.00068                OUT.run010.00576  OUT.run010.01084  OUT.run010.01592
+OUT.run010.00069                OUT.run010.00577  OUT.run010.01085  OUT.run010.01593
+OUT.run010.00070                OUT.run010.00578  OUT.run010.01086  OUT.run010.01594
+OUT.run010.00071                OUT.run010.00579  OUT.run010.01087  OUT.run010.01595
+OUT.run010.00072                OUT.run010.00580  OUT.run010.01088  OUT.run010.01596
+OUT.run010.00073                OUT.run010.00581  OUT.run010.01089  OUT.run010.01597
+OUT.run010.00074                OUT.run010.00582  OUT.run010.01090  OUT.run010.01598
+OUT.run010.00075                OUT.run010.00583  OUT.run010.01091  OUT.run010.01599
+OUT.run010.00076                OUT.run010.00584  OUT.run010.01092  OUT.run010.01600
+OUT.run010.00077                OUT.run010.00585  OUT.run010.01093  OUT.run010.01601
+OUT.run010.00078                OUT.run010.00586  OUT.run010.01094  OUT.run010.01602
+OUT.run010.00079                OUT.run010.00587  OUT.run010.01095  OUT.run010.01603
+OUT.run010.00080                OUT.run010.00588  OUT.run010.01096  OUT.run010.01604
+OUT.run010.00081                OUT.run010.00589  OUT.run010.01097  OUT.run010.01605
+OUT.run010.00082                OUT.run010.00590  OUT.run010.01098  OUT.run010.01606
+OUT.run010.00083                OUT.run010.00591  OUT.run010.01099  OUT.run010.01607
+OUT.run010.00084                OUT.run010.00592  OUT.run010.01100  OUT.run010.01608
+OUT.run010.00085                OUT.run010.00593  OUT.run010.01101  OUT.run010.01609
+OUT.run010.00086                OUT.run010.00594  OUT.run010.01102  OUT.run010.01610
+OUT.run010.00087                OUT.run010.00595  OUT.run010.01103  OUT.run010.01611
+OUT.run010.00088                OUT.run010.00596  OUT.run010.01104  OUT.run010.01612
+OUT.run010.00089                OUT.run010.00597  OUT.run010.01105  OUT.run010.01613
+OUT.run010.00090                OUT.run010.00598  OUT.run010.01106  OUT.run010.01614
+OUT.run010.00091                OUT.run010.00599  OUT.run010.01107  OUT.run010.01615
+OUT.run010.00092                OUT.run010.00600  OUT.run010.01108  OUT.run010.01616
+OUT.run010.00093                OUT.run010.00601  OUT.run010.01109  OUT.run010.01617
+OUT.run010.00094                OUT.run010.00602  OUT.run010.01110  OUT.run010.01618
+OUT.run010.00095                OUT.run010.00603  OUT.run010.01111  OUT.run010.01619
+OUT.run010.00096                OUT.run010.00604  OUT.run010.01112  OUT.run010.01620
+OUT.run010.00097                OUT.run010.00605  OUT.run010.01113  OUT.run010.01621
+OUT.run010.00098                OUT.run010.00606  OUT.run010.01114  OUT.run010.01622
+OUT.run010.00099                OUT.run010.00607  OUT.run010.01115  OUT.run010.01623
+OUT.run010.00100                OUT.run010.00608  OUT.run010.01116  OUT.run010.01624
+OUT.run010.00101                OUT.run010.00609  OUT.run010.01117  OUT.run010.01625
+OUT.run010.00102                OUT.run010.00610  OUT.run010.01118  OUT.run010.01626
+OUT.run010.00103                OUT.run010.00611  OUT.run010.01119  OUT.run010.01627
+OUT.run010.00104                OUT.run010.00612  OUT.run010.01120  OUT.run010.01628
+OUT.run010.00105                OUT.run010.00613  OUT.run010.01121  OUT.run010.01629
+OUT.run010.00106                OUT.run010.00614  OUT.run010.01122  OUT.run010.01630
+OUT.run010.00107                OUT.run010.00615  OUT.run010.01123  OUT.run010.01631
+OUT.run010.00108                OUT.run010.00616  OUT.run010.01124  OUT.run010.01632
+OUT.run010.00109                OUT.run010.00617  OUT.run010.01125  OUT.run010.01633
+OUT.run010.00110                OUT.run010.00618  OUT.run010.01126  OUT.run010.01634
+OUT.run010.00111                OUT.run010.00619  OUT.run010.01127  OUT.run010.01635
+OUT.run010.00112                OUT.run010.00620  OUT.run010.01128  OUT.run010.01636
+OUT.run010.00113                OUT.run010.00621  OUT.run010.01129  OUT.run010.01637
+OUT.run010.00114                OUT.run010.00622  OUT.run010.01130  OUT.run010.01638
+OUT.run010.00115                OUT.run010.00623  OUT.run010.01131  OUT.run010.01639
+OUT.run010.00116                OUT.run010.00624  OUT.run010.01132  OUT.run010.01640
+OUT.run010.00117                OUT.run010.00625  OUT.run010.01133  OUT.run010.01641
+OUT.run010.00118                OUT.run010.00626  OUT.run010.01134  OUT.run010.01642
+OUT.run010.00119                OUT.run010.00627  OUT.run010.01135  OUT.run010.01643
+OUT.run010.00120                OUT.run010.00628  OUT.run010.01136  OUT.run010.01644
+OUT.run010.00121                OUT.run010.00629  OUT.run010.01137  OUT.run010.01645
+OUT.run010.00122                OUT.run010.00630  OUT.run010.01138  OUT.run010.01646
+OUT.run010.00123                OUT.run010.00631  OUT.run010.01139  OUT.run010.01647
+OUT.run010.00124                OUT.run010.00632  OUT.run010.01140  OUT.run010.01648
+OUT.run010.00125                OUT.run010.00633  OUT.run010.01141  OUT.run010.01649
+OUT.run010.00126                OUT.run010.00634  OUT.run010.01142  OUT.run010.01650
+OUT.run010.00127                OUT.run010.00635  OUT.run010.01143  OUT.run010.01651
+OUT.run010.00128                OUT.run010.00636  OUT.run010.01144  OUT.run010.01652
+OUT.run010.00129                OUT.run010.00637  OUT.run010.01145  OUT.run010.01653
+OUT.run010.00130                OUT.run010.00638  OUT.run010.01146  OUT.run010.01654
+OUT.run010.00131                OUT.run010.00639  OUT.run010.01147  OUT.run010.01655
+OUT.run010.00132                OUT.run010.00640  OUT.run010.01148  OUT.run010.01656
+OUT.run010.00133                OUT.run010.00641  OUT.run010.01149  OUT.run010.01657
+OUT.run010.00134                OUT.run010.00642  OUT.run010.01150  OUT.run010.01658
+OUT.run010.00135                OUT.run010.00643  OUT.run010.01151  OUT.run010.01659
+OUT.run010.00136                OUT.run010.00644  OUT.run010.01152  OUT.run010.01660
+OUT.run010.00137                OUT.run010.00645  OUT.run010.01153  OUT.run010.01661
+OUT.run010.00138                OUT.run010.00646  OUT.run010.01154  OUT.run010.01662
+OUT.run010.00139                OUT.run010.00647  OUT.run010.01155  OUT.run010.01663
+OUT.run010.00140                OUT.run010.00648  OUT.run010.01156  OUT.run010.01664
+OUT.run010.00141                OUT.run010.00649  OUT.run010.01157  OUT.run010.01665
+OUT.run010.00142                OUT.run010.00650  OUT.run010.01158  OUT.run010.01666
+OUT.run010.00143                OUT.run010.00651  OUT.run010.01159  OUT.run010.01667
+OUT.run010.00144                OUT.run010.00652  OUT.run010.01160  OUT.run010.01668
+OUT.run010.00145                OUT.run010.00653  OUT.run010.01161  OUT.run010.01669
+OUT.run010.00146                OUT.run010.00654  OUT.run010.01162  OUT.run010.01670
+OUT.run010.00147                OUT.run010.00655  OUT.run010.01163  OUT.run010.01671
+OUT.run010.00148                OUT.run010.00656  OUT.run010.01164  OUT.run010.01672
+OUT.run010.00149                OUT.run010.00657  OUT.run010.01165  OUT.run010.01673
+OUT.run010.00150                OUT.run010.00658  OUT.run010.01166  OUT.run010.01674
+OUT.run010.00151                OUT.run010.00659  OUT.run010.01167  OUT.run010.01675
+OUT.run010.00152                OUT.run010.00660  OUT.run010.01168  OUT.run010.01676
+OUT.run010.00153                OUT.run010.00661  OUT.run010.01169  OUT.run010.01677
+OUT.run010.00154                OUT.run010.00662  OUT.run010.01170  OUT.run010.01678
+OUT.run010.00155                OUT.run010.00663  OUT.run010.01171  OUT.run010.01679
+OUT.run010.00156                OUT.run010.00664  OUT.run010.01172  OUT.run010.01680
+OUT.run010.00157                OUT.run010.00665  OUT.run010.01173  OUT.run010.01681
+OUT.run010.00158                OUT.run010.00666  OUT.run010.01174  OUT.run010.01682
+OUT.run010.00159                OUT.run010.00667  OUT.run010.01175  OUT.run010.01683
+OUT.run010.00160                OUT.run010.00668  OUT.run010.01176  OUT.run010.01684
+OUT.run010.00161                OUT.run010.00669  OUT.run010.01177  OUT.run010.01685
+OUT.run010.00162                OUT.run010.00670  OUT.run010.01178  OUT.run010.01686
+OUT.run010.00163                OUT.run010.00671  OUT.run010.01179  OUT.run010.01687
+OUT.run010.00164                OUT.run010.00672  OUT.run010.01180  OUT.run010.01688
+OUT.run010.00165                OUT.run010.00673  OUT.run010.01181  OUT.run010.01689
+OUT.run010.00166                OUT.run010.00674  OUT.run010.01182  OUT.run010.01690
+OUT.run010.00167                OUT.run010.00675  OUT.run010.01183  OUT.run010.01691
+OUT.run010.00168                OUT.run010.00676  OUT.run010.01184  OUT.run010.01692
+OUT.run010.00169                OUT.run010.00677  OUT.run010.01185  OUT.run010.01693
+OUT.run010.00170                OUT.run010.00678  OUT.run010.01186  OUT.run010.01694
+OUT.run010.00171                OUT.run010.00679  OUT.run010.01187  OUT.run010.01695
+OUT.run010.00172                OUT.run010.00680  OUT.run010.01188  OUT.run010.01696
+OUT.run010.00173                OUT.run010.00681  OUT.run010.01189  OUT.run010.01697
+OUT.run010.00174                OUT.run010.00682  OUT.run010.01190  OUT.run010.01698
+OUT.run010.00175                OUT.run010.00683  OUT.run010.01191  OUT.run010.01699
+OUT.run010.00176                OUT.run010.00684  OUT.run010.01192  OUT.run010.01700
+OUT.run010.00177                OUT.run010.00685  OUT.run010.01193  OUT.run010.01701
+OUT.run010.00178                OUT.run010.00686  OUT.run010.01194  OUT.run010.01702
+OUT.run010.00179                OUT.run010.00687  OUT.run010.01195  OUT.run010.01703
+OUT.run010.00180                OUT.run010.00688  OUT.run010.01196  OUT.run010.01704
+OUT.run010.00181                OUT.run010.00689  OUT.run010.01197  OUT.run010.01705
+OUT.run010.00182                OUT.run010.00690  OUT.run010.01198  OUT.run010.01706
+OUT.run010.00183                OUT.run010.00691  OUT.run010.01199  OUT.run010.01707
+OUT.run010.00184                OUT.run010.00692  OUT.run010.01200  OUT.run010.01708
+OUT.run010.00185                OUT.run010.00693  OUT.run010.01201  OUT.run010.01709
+OUT.run010.00186                OUT.run010.00694  OUT.run010.01202  OUT.run010.01710
+OUT.run010.00187                OUT.run010.00695  OUT.run010.01203  OUT.run010.01711
+OUT.run010.00188                OUT.run010.00696  OUT.run010.01204  OUT.run010.01712
+OUT.run010.00189                OUT.run010.00697  OUT.run010.01205  OUT.run010.01713
+OUT.run010.00190                OUT.run010.00698  OUT.run010.01206  OUT.run010.01714
+OUT.run010.00191                OUT.run010.00699  OUT.run010.01207  OUT.run010.01715
+OUT.run010.00192                OUT.run010.00700  OUT.run010.01208  OUT.run010.01716
+OUT.run010.00193                OUT.run010.00701  OUT.run010.01209  OUT.run010.01717
+OUT.run010.00194                OUT.run010.00702  OUT.run010.01210  OUT.run010.01718
+OUT.run010.00195                OUT.run010.00703  OUT.run010.01211  OUT.run010.01719
+OUT.run010.00196                OUT.run010.00704  OUT.run010.01212  OUT.run010.01720
+OUT.run010.00197                OUT.run010.00705  OUT.run010.01213  OUT.run010.01721
+OUT.run010.00198                OUT.run010.00706  OUT.run010.01214  OUT.run010.01722
+OUT.run010.00199                OUT.run010.00707  OUT.run010.01215  OUT.run010.01723
+OUT.run010.00200                OUT.run010.00708  OUT.run010.01216  OUT.run010.01724
+OUT.run010.00201                OUT.run010.00709  OUT.run010.01217  OUT.run010.01725
+OUT.run010.00202                OUT.run010.00710  OUT.run010.01218  OUT.run010.01726
+OUT.run010.00203                OUT.run010.00711  OUT.run010.01219  OUT.run010.01727
+OUT.run010.00204                OUT.run010.00712  OUT.run010.01220  OUT.run010.01728
+OUT.run010.00205                OUT.run010.00713  OUT.run010.01221  OUT.run010.01729
+OUT.run010.00206                OUT.run010.00714  OUT.run010.01222  OUT.run010.01730
+OUT.run010.00207                OUT.run010.00715  OUT.run010.01223  OUT.run010.01731
+OUT.run010.00208                OUT.run010.00716  OUT.run010.01224  OUT.run010.01732
+OUT.run010.00209                OUT.run010.00717  OUT.run010.01225  OUT.run010.01733
+OUT.run010.00210                OUT.run010.00718  OUT.run010.01226  OUT.run010.01734
+OUT.run010.00211                OUT.run010.00719  OUT.run010.01227  OUT.run010.01735
+OUT.run010.00212                OUT.run010.00720  OUT.run010.01228  OUT.run010.01736
+OUT.run010.00213                OUT.run010.00721  OUT.run010.01229  OUT.run010.01737
+OUT.run010.00214                OUT.run010.00722  OUT.run010.01230  OUT.run010.01738
+OUT.run010.00215                OUT.run010.00723  OUT.run010.01231  OUT.run010.01739
+OUT.run010.00216                OUT.run010.00724  OUT.run010.01232  OUT.run010.01740
+OUT.run010.00217                OUT.run010.00725  OUT.run010.01233  OUT.run010.01741
+OUT.run010.00218                OUT.run010.00726  OUT.run010.01234  OUT.run010.01742
+OUT.run010.00219                OUT.run010.00727  OUT.run010.01235  OUT.run010.01743
+OUT.run010.00220                OUT.run010.00728  OUT.run010.01236  OUT.run010.01744
+OUT.run010.00221                OUT.run010.00729  OUT.run010.01237  OUT.run010.01745
+OUT.run010.00222                OUT.run010.00730  OUT.run010.01238  OUT.run010.01746
+OUT.run010.00223                OUT.run010.00731  OUT.run010.01239  OUT.run010.01747
+OUT.run010.00224                OUT.run010.00732  OUT.run010.01240  OUT.run010.01748
+OUT.run010.00225                OUT.run010.00733  OUT.run010.01241  OUT.run010.01749
+OUT.run010.00226                OUT.run010.00734  OUT.run010.01242  OUT.run010.01750
+OUT.run010.00227                OUT.run010.00735  OUT.run010.01243  OUT.run010.01751
+OUT.run010.00228                OUT.run010.00736  OUT.run010.01244  OUT.run010.01752
+OUT.run010.00229                OUT.run010.00737  OUT.run010.01245  OUT.run010.01753
+OUT.run010.00230                OUT.run010.00738  OUT.run010.01246  OUT.run010.01754
+OUT.run010.00231                OUT.run010.00739  OUT.run010.01247  OUT.run010.01755
+OUT.run010.00232                OUT.run010.00740  OUT.run010.01248  OUT.run010.01756
+OUT.run010.00233                OUT.run010.00741  OUT.run010.01249  OUT.run010.01757
+OUT.run010.00234                OUT.run010.00742  OUT.run010.01250  OUT.run010.01758
+OUT.run010.00235                OUT.run010.00743  OUT.run010.01251  OUT.run010.01759
+OUT.run010.00236                OUT.run010.00744  OUT.run010.01252  OUT.run010.01760
+OUT.run010.00237                OUT.run010.00745  OUT.run010.01253  OUT.run010.01761
+OUT.run010.00238                OUT.run010.00746  OUT.run010.01254  OUT.run010.01762
+OUT.run010.00239                OUT.run010.00747  OUT.run010.01255  OUT.run010.01763
+OUT.run010.00240                OUT.run010.00748  OUT.run010.01256  OUT.run010.01764
+OUT.run010.00241                OUT.run010.00749  OUT.run010.01257  OUT.run010.01765
+OUT.run010.00242                OUT.run010.00750  OUT.run010.01258  OUT.run010.01766
+OUT.run010.00243                OUT.run010.00751  OUT.run010.01259  OUT.run010.01767
+OUT.run010.00244                OUT.run010.00752  OUT.run010.01260  OUT.run010.01768
+OUT.run010.00245                OUT.run010.00753  OUT.run010.01261  OUT.run010.01769
+OUT.run010.00246                OUT.run010.00754  OUT.run010.01262  OUT.run010.01770
+OUT.run010.00247                OUT.run010.00755  OUT.run010.01263  OUT.run010.01771
+OUT.run010.00248                OUT.run010.00756  OUT.run010.01264  OUT.run010.01772
+OUT.run010.00249                OUT.run010.00757  OUT.run010.01265  OUT.run010.01773
+OUT.run010.00250                OUT.run010.00758  OUT.run010.01266  OUT.run010.01774
+OUT.run010.00251                OUT.run010.00759  OUT.run010.01267  OUT.run010.01775
+OUT.run010.00252                OUT.run010.00760  OUT.run010.01268  OUT.run010.01776
+OUT.run010.00253                OUT.run010.00761  OUT.run010.01269  OUT.run010.01777
+OUT.run010.00254                OUT.run010.00762  OUT.run010.01270  OUT.run010.01778
+OUT.run010.00255                OUT.run010.00763  OUT.run010.01271  OUT.run010.01779
+OUT.run010.00256                OUT.run010.00764  OUT.run010.01272  OUT.run010.01780
+OUT.run010.00257                OUT.run010.00765  OUT.run010.01273  OUT.run010.01781
+OUT.run010.00258                OUT.run010.00766  OUT.run010.01274  OUT.run010.01782
+OUT.run010.00259                OUT.run010.00767  OUT.run010.01275  OUT.run010.01783
+OUT.run010.00260                OUT.run010.00768  OUT.run010.01276  OUT.run010.01784
+OUT.run010.00261                OUT.run010.00769  OUT.run010.01277  OUT.run010.01785
+OUT.run010.00262                OUT.run010.00770  OUT.run010.01278  OUT.run010.01786
+OUT.run010.00263                OUT.run010.00771  OUT.run010.01279  OUT.run010.01787
+OUT.run010.00264                OUT.run010.00772  OUT.run010.01280  OUT.run010.01788
+OUT.run010.00265                OUT.run010.00773  OUT.run010.01281  OUT.run010.01789
+OUT.run010.00266                OUT.run010.00774  OUT.run010.01282  OUT.run010.01790
+OUT.run010.00267                OUT.run010.00775  OUT.run010.01283  OUT.run010.01791
+OUT.run010.00268                OUT.run010.00776  OUT.run010.01284  OUT.run010.01792
+OUT.run010.00269                OUT.run010.00777  OUT.run010.01285  OUT.run010.01793
+OUT.run010.00270                OUT.run010.00778  OUT.run010.01286  OUT.run010.01794
+OUT.run010.00271                OUT.run010.00779  OUT.run010.01287  OUT.run010.01795
+OUT.run010.00272                OUT.run010.00780  OUT.run010.01288  OUT.run010.01796
+OUT.run010.00273                OUT.run010.00781  OUT.run010.01289  OUT.run010.01797
+OUT.run010.00274                OUT.run010.00782  OUT.run010.01290  OUT.run010.01798
+OUT.run010.00275                OUT.run010.00783  OUT.run010.01291  OUT.run010.01799
+OUT.run010.00276                OUT.run010.00784  OUT.run010.01292  OUT.run010.01800
+OUT.run010.00277                OUT.run010.00785  OUT.run010.01293  OUT.run010.01801
+OUT.run010.00278                OUT.run010.00786  OUT.run010.01294  OUT.run010.01802
+OUT.run010.00279                OUT.run010.00787  OUT.run010.01295  OUT.run010.01803
+OUT.run010.00280                OUT.run010.00788  OUT.run010.01296  OUT.run010.01804
+OUT.run010.00281                OUT.run010.00789  OUT.run010.01297  OUT.run010.01805
+OUT.run010.00282                OUT.run010.00790  OUT.run010.01298  OUT.run010.01806
+OUT.run010.00283                OUT.run010.00791  OUT.run010.01299  OUT.run010.01807
+OUT.run010.00284                OUT.run010.00792  OUT.run010.01300  OUT.run010.01808
+OUT.run010.00285                OUT.run010.00793  OUT.run010.01301  OUT.run010.01809
+OUT.run010.00286                OUT.run010.00794  OUT.run010.01302  OUT.run010.01810
+OUT.run010.00287                OUT.run010.00795  OUT.run010.01303  OUT.run010.01811
+OUT.run010.00288                OUT.run010.00796  OUT.run010.01304  OUT.run010.01812
+OUT.run010.00289                OUT.run010.00797  OUT.run010.01305  OUT.run010.01813
+OUT.run010.00290                OUT.run010.00798  OUT.run010.01306  OUT.run010.01814
+OUT.run010.00291                OUT.run010.00799  OUT.run010.01307  OUT.run010.01815
+OUT.run010.00292                OUT.run010.00800  OUT.run010.01308  OUT.run010.01816
+OUT.run010.00293                OUT.run010.00801  OUT.run010.01309  OUT.run010.01817
+OUT.run010.00294                OUT.run010.00802  OUT.run010.01310  OUT.run010.01818
+OUT.run010.00295                OUT.run010.00803  OUT.run010.01311  OUT.run010.01819
+OUT.run010.00296                OUT.run010.00804  OUT.run010.01312  OUT.run010.01820
+OUT.run010.00297                OUT.run010.00805  OUT.run010.01313  OUT.run010.01821
+OUT.run010.00298                OUT.run010.00806  OUT.run010.01314  OUT.run010.01822
+OUT.run010.00299                OUT.run010.00807  OUT.run010.01315  OUT.run010.01823
+OUT.run010.00300                OUT.run010.00808  OUT.run010.01316  OUT.run010.01824
+OUT.run010.00301                OUT.run010.00809  OUT.run010.01317  OUT.run010.01825
+OUT.run010.00302                OUT.run010.00810  OUT.run010.01318  OUT.run010.01826
+OUT.run010.00303                OUT.run010.00811  OUT.run010.01319  OUT.run010.01827
+OUT.run010.00304                OUT.run010.00812  OUT.run010.01320  OUT.run010.01828
+OUT.run010.00305                OUT.run010.00813  OUT.run010.01321  OUT.run010.01829
+OUT.run010.00306                OUT.run010.00814  OUT.run010.01322  OUT.run010.01830
+OUT.run010.00307                OUT.run010.00815  OUT.run010.01323  OUT.run010.01831
+OUT.run010.00308                OUT.run010.00816  OUT.run010.01324  OUT.run010.01832
+OUT.run010.00309                OUT.run010.00817  OUT.run010.01325  OUT.run010.01833
+OUT.run010.00310                OUT.run010.00818  OUT.run010.01326  OUT.run010.01834
+OUT.run010.00311                OUT.run010.00819  OUT.run010.01327  OUT.run010.01835
+OUT.run010.00312                OUT.run010.00820  OUT.run010.01328  OUT.run010.01836
+OUT.run010.00313                OUT.run010.00821  OUT.run010.01329  OUT.run010.01837
+OUT.run010.00314                OUT.run010.00822  OUT.run010.01330  OUT.run010.01838
+OUT.run010.00315                OUT.run010.00823  OUT.run010.01331  OUT.run010.01839
+OUT.run010.00316                OUT.run010.00824  OUT.run010.01332  OUT.run010.01840
+OUT.run010.00317                OUT.run010.00825  OUT.run010.01333  OUT.run010.01841
+OUT.run010.00318                OUT.run010.00826  OUT.run010.01334  OUT.run010.01842
+OUT.run010.00319                OUT.run010.00827  OUT.run010.01335  OUT.run010.01843
+OUT.run010.00320                OUT.run010.00828  OUT.run010.01336  OUT.run010.01844
+OUT.run010.00321                OUT.run010.00829  OUT.run010.01337  OUT.run010.01845
+OUT.run010.00322                OUT.run010.00830  OUT.run010.01338  OUT.run010.01846
+OUT.run010.00323                OUT.run010.00831  OUT.run010.01339  OUT.run010.01847
+OUT.run010.00324                OUT.run010.00832  OUT.run010.01340  OUT.run010.01848
+OUT.run010.00325                OUT.run010.00833  OUT.run010.01341  OUT.run010.01849
+OUT.run010.00326                OUT.run010.00834  OUT.run010.01342  OUT.run010.01850
+OUT.run010.00327                OUT.run010.00835  OUT.run010.01343  OUT.run010.01851
+OUT.run010.00328                OUT.run010.00836  OUT.run010.01344  OUT.run010.01852
+OUT.run010.00329                OUT.run010.00837  OUT.run010.01345  OUT.run010.01853
+OUT.run010.00330                OUT.run010.00838  OUT.run010.01346  OUT.run010.01854
+OUT.run010.00331                OUT.run010.00839  OUT.run010.01347  OUT.run010.01855
+OUT.run010.00332                OUT.run010.00840  OUT.run010.01348  OUT.run010.01856
+OUT.run010.00333                OUT.run010.00841  OUT.run010.01349  OUT.run010.01857
+OUT.run010.00334                OUT.run010.00842  OUT.run010.01350  OUT.run010.01858
+OUT.run010.00335                OUT.run010.00843  OUT.run010.01351  OUT.run010.01859
+OUT.run010.00336                OUT.run010.00844  OUT.run010.01352  OUT.run010.01860
+OUT.run010.00337                OUT.run010.00845  OUT.run010.01353  OUT.run010.01861
+OUT.run010.00338                OUT.run010.00846  OUT.run010.01354  OUT.run010.01862
+OUT.run010.00339                OUT.run010.00847  OUT.run010.01355  OUT.run010.01863
+OUT.run010.00340                OUT.run010.00848  OUT.run010.01356  OUT.run010.01864
+OUT.run010.00341                OUT.run010.00849  OUT.run010.01357  OUT.run010.01865
+OUT.run010.00342                OUT.run010.00850  OUT.run010.01358  OUT.run010.01866
+OUT.run010.00343                OUT.run010.00851  OUT.run010.01359  OUT.run010.01867
+OUT.run010.00344                OUT.run010.00852  OUT.run010.01360  OUT.run010.01868
+OUT.run010.00345                OUT.run010.00853  OUT.run010.01361  OUT.run010.01869
+OUT.run010.00346                OUT.run010.00854  OUT.run010.01362  OUT.run010.01870
+OUT.run010.00347                OUT.run010.00855  OUT.run010.01363  OUT.run010.01871
+OUT.run010.00348                OUT.run010.00856  OUT.run010.01364  OUT.run010.01872
+OUT.run010.00349                OUT.run010.00857  OUT.run010.01365  OUT.run010.01873
+OUT.run010.00350                OUT.run010.00858  OUT.run010.01366  OUT.run010.01874
+OUT.run010.00351                OUT.run010.00859  OUT.run010.01367  OUT.run010.01875
+OUT.run010.00352                OUT.run010.00860  OUT.run010.01368  OUT.run010.01876
+OUT.run010.00353                OUT.run010.00861  OUT.run010.01369  OUT.run010.01877
+OUT.run010.00354                OUT.run010.00862  OUT.run010.01370  OUT.run010.01878
+OUT.run010.00355                OUT.run010.00863  OUT.run010.01371  OUT.run010.01879
+OUT.run010.00356                OUT.run010.00864  OUT.run010.01372  OUT.run010.01880
+OUT.run010.00357                OUT.run010.00865  OUT.run010.01373  OUT.run010.01881
+OUT.run010.00358                OUT.run010.00866  OUT.run010.01374  OUT.run010.01882
+OUT.run010.00359                OUT.run010.00867  OUT.run010.01375  OUT.run010.01883
+OUT.run010.00360                OUT.run010.00868  OUT.run010.01376  OUT.run010.01884
+OUT.run010.00361                OUT.run010.00869  OUT.run010.01377  OUT.run010.01885
+OUT.run010.00362                OUT.run010.00870  OUT.run010.01378  OUT.run010.01886
+OUT.run010.00363                OUT.run010.00871  OUT.run010.01379  OUT.run010.01887
+OUT.run010.00364                OUT.run010.00872  OUT.run010.01380  OUT.run010.01888
+OUT.run010.00365                OUT.run010.00873  OUT.run010.01381  OUT.run010.01889
+OUT.run010.00366                OUT.run010.00874  OUT.run010.01382  OUT.run010.01890
+OUT.run010.00367                OUT.run010.00875  OUT.run010.01383  OUT.run010.01891
+OUT.run010.00368                OUT.run010.00876  OUT.run010.01384  OUT.run010.01892
+OUT.run010.00369                OUT.run010.00877  OUT.run010.01385  OUT.run010.01893
+OUT.run010.00370                OUT.run010.00878  OUT.run010.01386  OUT.run010.01894
+OUT.run010.00371                OUT.run010.00879  OUT.run010.01387  OUT.run010.01895
+OUT.run010.00372                OUT.run010.00880  OUT.run010.01388  OUT.run010.01896
+OUT.run010.00373                OUT.run010.00881  OUT.run010.01389  OUT.run010.01897
+OUT.run010.00374                OUT.run010.00882  OUT.run010.01390  OUT.run010.01898
+OUT.run010.00375                OUT.run010.00883  OUT.run010.01391  OUT.run010.01899
+OUT.run010.00376                OUT.run010.00884  OUT.run010.01392  OUT.run010.01900
+OUT.run010.00377                OUT.run010.00885  OUT.run010.01393  OUT.run010.01901
+OUT.run010.00378                OUT.run010.00886  OUT.run010.01394  OUT.run010.01902
+OUT.run010.00379                OUT.run010.00887  OUT.run010.01395  OUT.run010.01903
+OUT.run010.00380                OUT.run010.00888  OUT.run010.01396  OUT.run010.01904
+OUT.run010.00381                OUT.run010.00889  OUT.run010.01397  OUT.run010.01905
+OUT.run010.00382                OUT.run010.00890  OUT.run010.01398  OUT.run010.01906
+OUT.run010.00383                OUT.run010.00891  OUT.run010.01399  OUT.run010.01907
+OUT.run010.00384                OUT.run010.00892  OUT.run010.01400  OUT.run010.01908
+OUT.run010.00385                OUT.run010.00893  OUT.run010.01401  OUT.run010.01909
+OUT.run010.00386                OUT.run010.00894  OUT.run010.01402  OUT.run010.01910
+OUT.run010.00387                OUT.run010.00895  OUT.run010.01403  OUT.run010.01911
+OUT.run010.00388                OUT.run010.00896  OUT.run010.01404  OUT.run010.01912
+OUT.run010.00389                OUT.run010.00897  OUT.run010.01405  OUT.run010.01913
+OUT.run010.00390                OUT.run010.00898  OUT.run010.01406  OUT.run010.01914
+OUT.run010.00391                OUT.run010.00899  OUT.run010.01407  OUT.run010.01915
+OUT.run010.00392                OUT.run010.00900  OUT.run010.01408  OUT.run010.01916
+OUT.run010.00393                OUT.run010.00901  OUT.run010.01409  OUT.run010.01917
+OUT.run010.00394                OUT.run010.00902  OUT.run010.01410  OUT.run010.01918
+OUT.run010.00395                OUT.run010.00903  OUT.run010.01411  OUT.run010.01919
+OUT.run010.00396                OUT.run010.00904  OUT.run010.01412  OUT.run010.01920
+OUT.run010.00397                OUT.run010.00905  OUT.run010.01413  OUT.run010.01921
+OUT.run010.00398                OUT.run010.00906  OUT.run010.01414  OUT.run010.01922
+OUT.run010.00399                OUT.run010.00907  OUT.run010.01415  OUT.run010.01923
+OUT.run010.00400                OUT.run010.00908  OUT.run010.01416  OUT.run010.01924
+OUT.run010.00401                OUT.run010.00909  OUT.run010.01417  OUT.run010.01925
+OUT.run010.00402                OUT.run010.00910  OUT.run010.01418  OUT.run010.01926
+OUT.run010.00403                OUT.run010.00911  OUT.run010.01419  OUT.run010.01927
+OUT.run010.00404                OUT.run010.00912  OUT.run010.01420  OUT.run010.01928
+OUT.run010.00405                OUT.run010.00913  OUT.run010.01421  OUT.run010.01929
+OUT.run010.00406                OUT.run010.00914  OUT.run010.01422  OUT.run010.01930
+OUT.run010.00407                OUT.run010.00915  OUT.run010.01423  OUT.run010.01931
+OUT.run010.00408                OUT.run010.00916  OUT.run010.01424  OUT.run010.01932
+OUT.run010.00409                OUT.run010.00917  OUT.run010.01425  OUT.run010.01933
+OUT.run010.00410                OUT.run010.00918  OUT.run010.01426  OUT.run010.01934
+OUT.run010.00411                OUT.run010.00919  OUT.run010.01427  OUT.run010.01935
+OUT.run010.00412                OUT.run010.00920  OUT.run010.01428  OUT.run010.01936
+OUT.run010.00413                OUT.run010.00921  OUT.run010.01429  OUT.run010.01937
+OUT.run010.00414                OUT.run010.00922  OUT.run010.01430  OUT.run010.01938
+OUT.run010.00415                OUT.run010.00923  OUT.run010.01431  OUT.run010.01939
+OUT.run010.00416                OUT.run010.00924  OUT.run010.01432  OUT.run010.01940
+OUT.run010.00417                OUT.run010.00925  OUT.run010.01433  OUT.run010.01941
+OUT.run010.00418                OUT.run010.00926  OUT.run010.01434  OUT.run010.01942
+OUT.run010.00419                OUT.run010.00927  OUT.run010.01435  OUT.run010.01943
+OUT.run010.00420                OUT.run010.00928  OUT.run010.01436  OUT.run010.01944
+OUT.run010.00421                OUT.run010.00929  OUT.run010.01437  OUT.run010.01945
+OUT.run010.00422                OUT.run010.00930  OUT.run010.01438  OUT.run010.01946
+OUT.run010.00423                OUT.run010.00931  OUT.run010.01439  OUT.run010.01947
+OUT.run010.00424                OUT.run010.00932  OUT.run010.01440  OUT.run010.01948
+OUT.run010.00425                OUT.run010.00933  OUT.run010.01441  OUT.run010.01949
+OUT.run010.00426                OUT.run010.00934  OUT.run010.01442  OUT.run010.01950
+OUT.run010.00427                OUT.run010.00935  OUT.run010.01443  OUT.run010.01951
+OUT.run010.00428                OUT.run010.00936  OUT.run010.01444  OUT.run010.01952
+OUT.run010.00429                OUT.run010.00937  OUT.run010.01445  OUT.run010.01953
+OUT.run010.00430                OUT.run010.00938  OUT.run010.01446  OUT.run010.01954
+OUT.run010.00431                OUT.run010.00939  OUT.run010.01447  OUT.run010.01955
+OUT.run010.00432                OUT.run010.00940  OUT.run010.01448  OUT.run010.01956
+OUT.run010.00433                OUT.run010.00941  OUT.run010.01449  OUT.run010.01957
+OUT.run010.00434                OUT.run010.00942  OUT.run010.01450  OUT.run010.01958
+OUT.run010.00435                OUT.run010.00943  OUT.run010.01451  OUT.run010.01959
+OUT.run010.00436                OUT.run010.00944  OUT.run010.01452  OUT.run010.01960
+OUT.run010.00437                OUT.run010.00945  OUT.run010.01453  OUT.run010.01961
+OUT.run010.00438                OUT.run010.00946  OUT.run010.01454  OUT.run010.01962
+OUT.run010.00439                OUT.run010.00947  OUT.run010.01455  OUT.run010.01963
+OUT.run010.00440                OUT.run010.00948  OUT.run010.01456  OUT.run010.01964
+OUT.run010.00441                OUT.run010.00949  OUT.run010.01457  OUT.run010.01965
+OUT.run010.00442                OUT.run010.00950  OUT.run010.01458  OUT.run010.01966
+OUT.run010.00443                OUT.run010.00951  OUT.run010.01459  OUT.run010.01967
+OUT.run010.00444                OUT.run010.00952  OUT.run010.01460  OUT.run010.01968
+OUT.run010.00445                OUT.run010.00953  OUT.run010.01461  OUT.run010.01969
+OUT.run010.00446                OUT.run010.00954  OUT.run010.01462  OUT.run010.01970
+OUT.run010.00447                OUT.run010.00955  OUT.run010.01463  OUT.run010.01971
+OUT.run010.00448                OUT.run010.00956  OUT.run010.01464  OUT.run010.01972
+OUT.run010.00449                OUT.run010.00957  OUT.run010.01465  OUT.run010.01973
+OUT.run010.00450                OUT.run010.00958  OUT.run010.01466  OUT.run010.01974
+OUT.run010.00451                OUT.run010.00959  OUT.run010.01467  OUT.run010.01975
+OUT.run010.00452                OUT.run010.00960  OUT.run010.01468  OUT.run010.01976
+OUT.run010.00453                OUT.run010.00961  OUT.run010.01469  OUT.run010.01977
+OUT.run010.00454                OUT.run010.00962  OUT.run010.01470  OUT.run010.01978
+OUT.run010.00455                OUT.run010.00963  OUT.run010.01471  OUT.run010.01979
+OUT.run010.00456                OUT.run010.00964  OUT.run010.01472  OUT.run010.01980
+OUT.run010.00457                OUT.run010.00965  OUT.run010.01473  OUT.run010.01981
+OUT.run010.00458                OUT.run010.00966  OUT.run010.01474  OUT.run010.01982
+OUT.run010.00459                OUT.run010.00967  OUT.run010.01475  OUT.run010.01983
+OUT.run010.00460                OUT.run010.00968  OUT.run010.01476  OUT.run010.01984
+OUT.run010.00461                OUT.run010.00969  OUT.run010.01477  OUT.run010.01985
+OUT.run010.00462                OUT.run010.00970  OUT.run010.01478  OUT.run010.01986
+OUT.run010.00463                OUT.run010.00971  OUT.run010.01479  OUT.run010.01987
+OUT.run010.00464                OUT.run010.00972  OUT.run010.01480  OUT.run010.01988
+OUT.run010.00465                OUT.run010.00973  OUT.run010.01481  OUT.run010.01989
+OUT.run010.00466                OUT.run010.00974  OUT.run010.01482  OUT.run010.01990
+OUT.run010.00467                OUT.run010.00975  OUT.run010.01483  OUT.run010.01991
+OUT.run010.00468                OUT.run010.00976  OUT.run010.01484  OUT.run010.01992
+OUT.run010.00469                OUT.run010.00977  OUT.run010.01485  OUT.run010.01993
+OUT.run010.00470                OUT.run010.00978  OUT.run010.01486  OUT.run010.01994
+OUT.run010.00471                OUT.run010.00979  OUT.run010.01487  OUT.run010.01995
+OUT.run010.00472                OUT.run010.00980  OUT.run010.01488  OUT.run010.01996
+OUT.run010.00473                OUT.run010.00981  OUT.run010.01489  OUT.run010.01997
+OUT.run010.00474                OUT.run010.00982  OUT.run010.01490  OUT.run010.01998
+OUT.run010.00475                OUT.run010.00983  OUT.run010.01491  OUT.run010.01999
+OUT.run010.00476                OUT.run010.00984  OUT.run010.01492  OUT.run010.02000
+OUT.run010.00477                OUT.run010.00985  OUT.run010.01493  OUT.run010.02001
+OUT.run010.00478                OUT.run010.00986  OUT.run010.01494  OUT.run010.chkpt
+OUT.run010.00479                OUT.run010.00987  OUT.run010.01495  OUT.run010.chkpt.bak
+OUT.run010.00480                OUT.run010.00988  OUT.run010.01496  PARAM.run010
+OUT.run010.00481                OUT.run010.00989  OUT.run010.01497  profile.diag
+OUT.run010.00482                OUT.run010.00990  OUT.run010.01498  run010.levels
+OUT.run010.00483                OUT.run010.00991  OUT.run010.01499  run010.number
+OUT.run010.00484                OUT.run010.00992  OUT.run010.01500  run010.pcadiag.sphereSL.dark
+OUT.run010.00485                OUT.run010.00993  OUT.run010.01501  run_exp
+OUT.run010.00486                OUT.run010.00994  OUT.run010.01502  run_gendisk
+OUT.run010.00487                OUT.run010.00995  OUT.run010.01503  SLGridSph.cache.run010
+OUT.run010.00488                OUT.run010.00996  OUT.run010.01504  SLGridSph.fake
+OUT.run010.00489                OUT.run010.00997  OUT.run010.01505  SLGridSph.model
+OUT.run010.00490                OUT.run010.00998  OUT.run010.01506  star.orient.run010
+OUT.run010.00491                OUT.run010.00999  OUT.run010.01507  test.orientation.run010
+OUT.run010.00492                OUT.run010.01000  OUT.run010.01508
+mpetersen@eagle:/scratch/mpetersen/Disk010$ nano coefficient_find.py
+mpetersen@eagle:/scratch/mpetersen/Disk010$ cp run_
+run_exp      run_gendisk  
+mpetersen@eagle:/scratch/mpetersen/Disk010$ cp run_exp run_coefs
+mpetersen@eagle:/scratch/mpetersen/Disk010$ nano run_coefs 
+mpetersen@eagle:/scratch/mpetersen/Disk010$ sbatch run_coefs 
+Submitted batch job 13963
+mpetersen@eagle:/scratch/mpetersen/Disk010$ squeue
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+             13812     debug     bash weinberg  R   10:57:25      1 node001
+             13928       eth     bash mmccrack  R    4:05:15      1 node057
+             13955       eth  mkimg26 mmccrack  R    3:00:48      1 node013
+             13948       eth  mkimg19 mmccrack  R    3:00:55      1 node006
+             13963        ib     c010 mpeterse  R       0:03      1 node014
+             13922        ib  omap003 mpeterse  R    8:55:31      1 node058
+             13926        ib     bash weinberg  R    4:51:08     16 node[016-031]
+mpetersen@eagle:/scratch/mpetersen/Disk010$ nano coef
+coefficient_find.py  coefs_run.out        
+mpetersen@eagle:/scratch/mpetersen/Disk010$ nano coefs_run.out 
+mpetersen@eagle:/scratch/mpetersen/Disk010$ squeue
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+             13812     debug     bash weinberg  R   10:57:58      1 node001
+             13928       eth     bash mmccrack  R    4:05:48      1 node057
+             13955       eth  mkimg26 mmccrack  R    3:01:21      1 node013
+             13948       eth  mkimg19 mmccrack  R    3:01:28      1 node006
+             13922        ib  omap003 mpeterse  R    8:56:04      1 node058
+             13926        ib     bash weinberg  R    4:51:41     16 node[016-031]
+mpetersen@eagle:/scratch/mpetersen/Disk010$ nano coefficient_find.py 
+
+  GNU nano 2.2.6                 File: coefficient_find.py                                Modified  
+
+
+
+simulation_directory = '/scratch/mpetersen/Disk010/'
+simulation_name = 'run010'
+date = '081617'
+
+eof_file = simulation_directory+'.eof.cache.file'
+
+# should use the file list
+
+for i in range(0,2001,1):
+    infile = simulation_directory+'OUT.'+simulation_name+'.%05i' %i
+    PSPDumpDisk = psp_io.Input(infile,comp='star',nout=100000)
+    EOFout = eof.compute_coefficients(PSPDumpDisk,eof_file)
+    # for easy transferrence around
+    eof.save_eof_coefficients(simulation_directory+'diskcoefs.'+date+'.dat',EOFout,verbose=1)
+
+
+
+
+
+EOF2,EOF2Dict = eof.restore_eof_coefficients('/scratch/mpetersen/Disk010/diskcoefs.081617.dat')
+
+
+^G Get Help     ^O WriteOut     ^R Read File    ^Y Prev Page    ^K Cut Text     ^C Cur Pos
+^X Exit         ^J Justify      ^W Where Is     ^V Next Page    ^U UnCut Text   ^T To Spell
